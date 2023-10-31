@@ -40,7 +40,7 @@ case $cmd in
   start|stop)
   # Check instance status; exit 1 if container has not been created
   if [ $container_status -ne 0 ]; then
-    echo "container has not been createdd"
+    echo "container has not been created"
     exit 1
   fi
   # Start or stop the container
