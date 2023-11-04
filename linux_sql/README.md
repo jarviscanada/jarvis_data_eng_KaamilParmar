@@ -88,6 +88,10 @@ Deployment was done using Git, Github, Docker, and crontab.
 + Docker to deploy the PSQL database
 + Crontab to execute the bash script
 
+### Improvements
++ Write more nuanced comments in bash scripts
++ Become more competent at VIM editor for assigning cron jobs
++ Set a script to check whenever info from `host_info.sh` updates
 
 
 
