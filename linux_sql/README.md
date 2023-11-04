@@ -74,7 +74,7 @@ crontab -e [* * * * * bash /global/path/to/host_usage.sh localhost 5432 host_age
 crontab - e []
 ```
 
-### Test
+## Test
 For testing the bash scripts, all testing was done in the terminal using the `-xv` flag during executing, which helped debug line-by-line
 what and where the bug could be occurring.
 
@@ -82,13 +82,13 @@ For testing ddl.sql, sample inserts were done first prior to executing the bash 
 then you would log into your psql docker instance and:
 ` \dt` on the terminal to check all databases and see if it was created, then call a select all statement, `SELECT * FROM [database]`, in the terminal to see if the inserts worked.
 
-### Deployment
+## Deployment
 Deployment was done using Git, Github, Docker, and crontab.
 + Git and Github to deploy the codes
 + Docker to deploy the PSQL database
 + Crontab to execute the bash script
 
-### Improvements
+## Improvements
 + Write more nuanced comments in bash scripts
 + Become more competent at VIM editor for assigning cron jobs
 + Set a script to check whenever info from `host_info.sh` updates
