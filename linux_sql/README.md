@@ -16,7 +16,7 @@ machine within the Google Cloud Platform. Additionally, crontab was employed to 
 # Create tables using ddl.sql
 export PGPASSWORD=[password]
 psql -h localhost -U [username] -c "CREATE DATABASE host_agent;" #(skip if already created)
-psql -h localhost -U [username] -d host_agent -f ./sql/ddl.sql
+psql -h localhost -U [username] -d host_gent -f ./sql/ddl.sql
 
 # Insert hardware specs data into the DB using host_info.sh
 ./scripts/host_info.sh localhost 5432 host_agent [username] [password]
