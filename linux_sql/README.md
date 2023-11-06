@@ -37,7 +37,7 @@ table and parse hardware information.  Finally, crontab is configured to monitor
 the host_usage.sh every minute and populating the database with information.
 
 ## Architecture
-d
+
 
 ## Scripts
 ### psql_docker.sh
@@ -73,6 +73,33 @@ crontab -e [* * * * * bash /global/path/to/host_usage.sh localhost 5432 host_age
 #To stop cron job
 crontab - e []
 ```
+
+## Database Modeling
+The design for the host_info and host_usage schemas are as follows.
+### Host Info
+| Column Name      | Data Type | Constraints      |
+|------------------|-----------|------------------|
+| timestamp        | TIMESTAMP | NOT NULL         |
+| host_id          | SERIAL    | NOT NULL         |
+| memory_free      | INT4      | NOT NULL         |
+| cpu_idle         | INT2      | NOT NULL         |
+| cpu_kernel       | INT2      | NOT NULL         |
+| disk_io          | INT4      | NOT NULL         |
+| disk_available   | INT4      | NOT NULL         |
+
+### Host Usage
+| Column Name       | Data Type   | Constraints           |
+|-------------------|-------------|-----------------------|
+| id                | SERIAL      | NOT NULL, PRIMARY KEY |
+| hostname          | VARCHAR     | NOT NULL, UNIQUE      |
+| cpu_number        | INT2        | NOT NULL              |
+| cpu_architecture  | VARCHAR     | NOT NULL              |
+| cpu_model         | VARCHAR     | NOT NULL              |
+| cpu_mhz           | FLOAT8      | NOT NULL              |
+| l2_cache          | INT4        | NOT NULL              |
+| timestamp         | TIMESTAMP   | NULL                  |
+| total_mem         | INT4        | NULL                  |
+
 
 ## Test
 For testing the bash scripts, all testing was done in the terminal using the `-xv` flag during executing, which helped debug line-by-line
