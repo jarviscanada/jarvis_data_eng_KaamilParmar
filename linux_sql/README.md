@@ -8,6 +8,7 @@ machine within the Google Cloud Platform. Additionally, crontab was employed to 
 
 ## Quick Start
 ```bash
+# Please ensure that you have execute permissions for all these files, if not chmod.
 # Start a psql instance using psql_docker.sh
 ./scripts/psql_docker.sh create [username] [password]
 # or if instance already exists
@@ -25,7 +26,7 @@ psql -h localhost -U [username] -d host_agent -f ./sql/ddl.sql
 ./scripts/host_usage.sh localhost 5432 host_agent [username] [password]
 
 # Crontab setup (inside square brackets is what to input in the file)
-crontab -e [* * * * * bash /global/path/to/host_usage.sh localhost 5432 host_agent postgres password > /tmp/host_usage.log]
+crontab -e [* * * * * bash /global/path/to/host_usage.sh localhost 5432 host_agent postgres password]
 #To stop cron job
 crontab - e []
 ```
@@ -37,7 +38,7 @@ table and parse hardware information.  Finally, crontab is configured to monitor
 the host_usage.sh every minute and populating the database with information.
 
 ## Architecture
-
+![Local Image](https://i.imgur.com/cccmLxl.png)
 
 ## Scripts
 ### psql_docker.sh
@@ -69,7 +70,7 @@ Captures hardware usage data from a Linux node and integrates it into the databa
 Automates the process of collecting data every minute by executing host_usage.sh
 ```bash 
 # Crontab setup (inside square brackets is what to input in the file)
-crontab -e [* * * * * bash /global/path/to/host_usage.sh localhost 5432 host_agent postgres password > /tmp/host_usage.log]
+crontab -e [* * * * * bash /global/path/to/host_usage.sh localhost 5432 host_agent postgres password]
 #To stop cron job
 crontab - e []
 ```
@@ -77,17 +78,6 @@ crontab - e []
 ## Database Modeling
 The design for the host_info and host_usage schemas are as follows.
 ### Host Info
-| Column Name      | Data Type | Constraints      |
-|------------------|-----------|------------------|
-| timestamp        | TIMESTAMP | NOT NULL         |
-| host_id          | SERIAL    | NOT NULL         |
-| memory_free      | INT4      | NOT NULL         |
-| cpu_idle         | INT2      | NOT NULL         |
-| cpu_kernel       | INT2      | NOT NULL         |
-| disk_io          | INT4      | NOT NULL         |
-| disk_available   | INT4      | NOT NULL         |
-
-### Host Usage
 | Column Name       | Data Type   | Constraints           |
 |-------------------|-------------|-----------------------|
 | id                | SERIAL      | NOT NULL, PRIMARY KEY |
@@ -100,6 +90,16 @@ The design for the host_info and host_usage schemas are as follows.
 | timestamp         | TIMESTAMP   | NULL                  |
 | total_mem         | INT4        | NULL                  |
 
+### Host Usage
+| Column Name      | Data Type | Constraints      |
+|------------------|-----------|------------------|
+| timestamp        | TIMESTAMP | NOT NULL         |
+| host_id          | SERIAL    | NOT NULL         |
+| memory_free      | INT4      | NOT NULL         |
+| cpu_idle         | INT2      | NOT NULL         |
+| cpu_kernel       | INT2      | NOT NULL         |
+| disk_io          | INT4      | NOT NULL         |
+| disk_available   | INT4      | NOT NULL         |
 
 ## Test
 For testing the bash scripts, all testing was done in the terminal using the `-xv` flag during executing, which helped debug line-by-line
