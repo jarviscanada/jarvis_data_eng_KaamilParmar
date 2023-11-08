@@ -23,9 +23,6 @@ total_mem=$(vmstat --unit M | tail -1 | awk '{print $4}'| xargs)
 timestamp=$(date +"%Y-%m-%d %H:%M:%S"| xargs)
 
 
-
-#host_id="(SELECT id FROM host_info WHERE hostname = '$hostname')";
-
 insert_stmt="INSERT INTO host_info ( hostname, cpu_number, cpu_architecture, cpu_model, cpu_mhz, l2_cache, timestamp, total_mem)
             VALUES('$hostname', '$cpu_number', '$cpu_architecture', '$cpu_model', '$cpu_mhz', '$l2_cache', '$timestamp', '$total_mem')"
 
