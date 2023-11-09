@@ -22,6 +22,8 @@ skills:
     - Express
     - HTML/CSS
     - Python
+    - VSCode
+    - IntelliJ
   # At least 5 skills
   competent:
     - Scala
@@ -29,6 +31,12 @@ skills:
     - C/C++
     - Springboot
     - Docker
+    - Github Actions
+    - Dr. Java
+    - Mocha
+    - JUnit
+    - Swing
+    - Atom
   # At least 5 skills
   familiar:
     - C#
@@ -36,6 +44,8 @@ skills:
     - Objective-C
     - Swift
     - pandas
+    - pygame
+    -
 
 # List of Jarvis projects
 jarvis_projects:
@@ -70,14 +80,14 @@ jarvis_projects:
 # Feel free to add more projects
 highlighted_projects:
     #project name
-  - name: "Web app for resturant"
+  - name: "Retro Video Games in Java"
     #URL is optional
-    git_url: "https://github.com/jarviscanada/jarvis_profile_builder"
+    git_url: "https://github.com/klparmar/Java-Projects"
     # The project description must start with an action verb (https://bit.ly/3guO98u)
-    description: Suspendisse a tincidunt odio. Suspendisse posuere luctus aliquet. Quisque magna tellus, tempor vitae arcu sed, volutpat scelerisque lacus. Aliquam varius pulvinar dapibus. Ut a tincidunt sem. Aenean sollicitudin fringilla erat ut imperdiet. Phasellus fermentum, enim vitae laoreet elementum, eros nisl hendrerit lorem.
-  - name: "Machine Learning"
-    git_url:
-    description: Suspendisse a tincidunt odio. Suspendisse posuere luctus aliquet. Quisque magna tellus, tempor vitae arcu sed, volutpat scelerisque lacus. Aliquam varius pulvinar dapibus. Ut a tincidunt sem. Aenean sollicitudin fringilla erat ut imperdiet. Phasellus fermentum, enim vitae laoreet elementum, eros nisl hendrerit lorem.
+    description: Created various interactive gaming applications utilizing numerous Java libraries such as Atari Breakout, Space Invaders, Frogger, and Pong.
+  - name: "E-Commerce Application"
+    git_url: "https://github.com/klparmar/react-ecomm-stripe-proj"
+    description: Deployed a responsive, dynamic, and mobile-adaptive FullStack web application for E-commerce, utilizing Javascript, Java Spring and Bootstrap as a platform for businesses to sell products
 
 #List of professional experience
 #The job description allows hiring managers to understand your job and the technologies you used(e.g. programming languages, libraries, algorithms, hardware, tools, etc.).
@@ -86,14 +96,13 @@ professional_experience:
   #Write your Jarvis role as a professional experience rather than training.
   - title: "Software Developer"
     company: "Jarvis"
-    duration: "2020-present"
+    duration: "2023-present"
     # The project description must start with an action verb (https://bit.ly/3guO98u)
-    description: "Donec mattis sed justo et sagittis. Vestibulum lacinia nulla ipsum. Curabitur imperdiet nibh vitae leo lacinia laoreet. Nullam accumsan, lectus ut maximus ultricies, augue justo egestas mi, vel bibendum felis."
-  - title: "Tutor"
-    company: "XYZ Company"
-    duration: "2019"
-    description: "Donec mattis sed justo et sagittis. Vestibulum lacinia nulla ipsum. Curabitur imperdiet nibh vitae leo lacinia laoreet. Nullam accumsan, lectus ut maximus ultricies, augue justo egestas mi, vel bibendum felis."
-
+    description: "Developed and deployed several applications"
+  - title: "Full Stack Developer"
+    company: "InspoBoard"
+    duration: "2022-2023"
+    description: "Designed, developed, and maintained a SaaS application for businesses to store and manage competitor Facebook and TikTok ads using the MERN (MongoDB, Express.js, React, Node.js) stack."
 #List of edcuation
 education: 
   - school_name: "York University"
@@ -101,10 +110,10 @@ education:
     degree: "Honours Bachelor of Science"
     department: "Computer Science"
     # optional
-    awards_achievements: 
-      - "Scholarship"
-      - "Dean's List (2015, 2016): Ut enim ad minim veniam"
-      - "GPA: 3.8/4.0"
+#    awards_achievements:
+#      - "Scholarship"
+#      - "Dean's List (2015, 2016): Ut enim ad minim veniam"
+#      - "GPA: 3.8/4.0"
 #  - school_name: "XYZ university"
 #    duration: "2016-2018"
 #    degree: "Master of Engineering"
