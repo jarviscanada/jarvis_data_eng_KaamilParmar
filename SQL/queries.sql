@@ -80,3 +80,13 @@ FROM
 ORDER BY
     recsname, recfname;
 
+--Q16 Produce a list of all members, along with their recommender, using no joins.
+SELECT DISTINCT
+    CONCAT(members.firstname, ' ', members.surname) AS member,
+    (SELECT DISTINCT CONCAT(recommenders.firstname, ' ', recommenders.surname)
+     FROM cd.members recommenders WHERE recommenders.memid=members.recommendedby)
+                                                    AS recommender
+FROM
+    cd.members members
+ORDER BY
+    member;
