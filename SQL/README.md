@@ -16,6 +16,16 @@ CREATE TABLE cd.members (
         REFERENCES cd.members(memid) ON DELETE SET NULL
 );
 
+CREATE TABLE cd.facilities (
+    facid INTEGER NOT NULL,
+    name character varying(100),
+    membercost numeric NOT NULL,
+    guestcost numeric NOT NULL,
+    initialoutlay numeric NOT NULL,
+    monthlymaintenance numeric NOT NULL,
+    CONSTRAINT facilities_pk PRIMARY KEY (facid)
+);
+
 CREATE TABLE cd.bookings (
     facid INTEGER NOT NULL,
     memid INTEGER NOT NULL,
@@ -23,8 +33,12 @@ CREATE TABLE cd.bookings (
     slots INTEGER NOT NULL,
     CONSTRAINT bookings_pk PRIMARY KEY (facid),
     CONSTRAINT fk_bookings_memid FOREIGN KEY (memid)
-        REFERENCES cd.bookings(facid)
+        REFERENCES cd.members(memid),
+    CONSTRAINT fk_bookings_facid FOREIGN KEY (facid)
+        REFERENCES cd.facilities(facid)
 );
+
+
 
 ```
 ##~~~~
