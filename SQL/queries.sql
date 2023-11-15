@@ -46,4 +46,37 @@ WHERE joindate > '2012-08-31'::date;
 SELECT surname FROM cd.members UNION SELECT name FROM cd.facilities;
 
 --Join
---Q12
+--Q12  Retrieve the start times of members' bookings
+SELECT starttime FROM cd.bookings INNER JOIN cd.members
+ON cd.bookings.memid = cd.members.memid
+WHERE cd.members.surname = 'Farrell' AND cd.members.firstname = 'David';
+
+--Q13  Work out the start times of bookings for tennis courts
+SELECT starttime, name
+FROM cd.bookings
+         INNER JOIN cd.facilities ON cd.bookings.facid = cd.facilities.facid
+WHERE name LIKE '%Tennis Court%' AND starttime::date = '2012-09-21'::date
+ORDER BY starttime;
+
+--Q14  Produce a list of all members, along with their recommender
+SELECT
+    members.firstname AS memfname,
+    members.surname AS memsname,
+    recommenders.firstname AS recfname,
+    recommenders.surname AS recsname
+FROM
+    cd.members members
+        LEFT OUTER JOIN cd.members recommenders ON recommenders.memid = members.recommendedby
+ORDER BY
+    memsname, memfname;
+
+--Q15  Produce a list of all members who have recommended another member
+SELECT DISTINCT
+    recommenders.firstname AS recfname,
+    recommenders.surname AS recsname
+FROM
+    cd.members members
+        INNER JOIN cd.members recommenders ON recommenders.memid = members.recommendedby
+ORDER BY
+    recsname, recfname;
+
