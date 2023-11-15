@@ -35,3 +35,15 @@ WHERE membercost < monthlymaintenance * 0.02 AND membercost > 0;
 --Q8  Basic string searches
 SELECT * FROM cd.facilities WHERE name LIKE '%Tennis%';
 
+--Q9  Matching against multiple possible values
+SELECT * FROM cd.facilities WHERE facid IN (1,5);
+
+--Q10  Working with dates
+SELECT memid, surname, firstname, joindate FROM cd.members
+WHERE joindate > '2012-08-31'::date;
+
+--Q11  Combining results from multiple queries
+SELECT surname FROM cd.members UNION SELECT name FROM cd.facilities;
+
+--Join
+--Q12
