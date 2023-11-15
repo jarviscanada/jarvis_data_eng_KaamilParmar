@@ -14,5 +14,7 @@ VALUES
 --Q3  Update some existing data
 UPDATE cd.facilities SET initialoutlay=10000 WHERE facid=1
 
+--Q4  Update multiple rows and columns at the same time
+UPDATE cd.facilities SET membercost=6, guestcost=30 WHERE facid=0 OR facid=1;
 
 
