@@ -100,7 +100,7 @@ professional_experience:
     description: "Developed and deployed several applications with languages and frameworks such as Bash, SQL, Java, Spark, Scala, Python, Javascript, React, Spring, Docker and worked in an Agile and SCRUM environment. Utilized Git and GitFlow for version control"
   - title: "Full Stack Developer"
     company: "InspoBoard"
-    duration: "2022-2023"
+    duration: "2022-2023d"
     description: "Designed, developed, and maintained a SaaS application for businesses to store and manage competitor Facebook and TikTok ads using the MERN (MongoDB, Express.js, React, Node.js) stack."
 #List of edcuation
 education: 
