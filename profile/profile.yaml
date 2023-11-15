@@ -124,9 +124,9 @@ others:
     #list of items
     bullets:
       - "CodeFI Club Leetcode Organizer at York University"
-  - title: "Awards"
-    bullets:
-      - "Winner"
+#  - title: "Awards"
+#    bullets:
+#      - "Winner"
   - title: "Activities/Hobbies"
     bullets:
       - "Basketball player (Love being a team player and cooperating)"

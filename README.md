@@ -17,22 +17,6 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_KaamilParm
 
 **Cluster Monitor** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_KaamilParmar/tree/masterhttps://github.com/jarviscanada/jarvis_data_eng_KaamilParmar/tree/main/linux_sql)]: Implemented a monitoring agent in Bash to consistently track and store hardware specs and usage data of host machines over time. This application syncs with a Postgres database, stored in a Docker container. Testing was conducted on a CentOS virtual machine hosted on the Google Cloud Platform, with debugging done on IntelliJ and CLI terminal.
 
-**Core Java Apps** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_KaamilParmar/tree/master/core_java)]:
-      
-  - Twitter App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam.
-  - JDBC App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam.
-  - Grep App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam.
-
-**Springboot App** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_KaamilParmar/tree/master/springboot)]: Not Started
-
-**Python Data Analytics** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_KaamilParmar/tree/master/python_data_anlytics)]: Not Started
-
-**Hadoop** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_KaamilParmar/tree/master/hadoop)]: Not Started
-
-**Spark** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_KaamilParmar/tree/master/spark)]: Not Started
-
-**Cloud/DevOps** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_KaamilParmar/tree/master/cloud_devops)]: Not Started
-
 
 ## Highlighted Projects
 **Retro Video Games in Java** [[GitHub](https://github.com/klparmar/Java-Projects)]: Created various interactive gaming applications utilizing numerous Java libraries such as Atari Breakout, Space Invaders, Frogger, and Pong.
@@ -54,10 +38,9 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_KaamilParm
 
 ## Miscellaneous
 - CodeFI Club Leetcode Organizer at York University
-- Winner
-- Basketball player
-- Competitive gaming
-- Astronomy
-- Origami
-- Chess
-- Working out
+- Basketball player (Love being a team player and cooperating)
+- Competitive gaming (Love challenging myself)
+- Astronomy (Love to discover and learn)
+- Origami (Like to engage in tasks that involve time care)
+- Chess (Love solving problems)
+- Working out (Strive for consistency)
