@@ -90,3 +90,7 @@ FROM
     cd.members members
 ORDER BY
     member;
+
+--Q17  Count the number of recommendations each member makes.
+SELECT recommendedby, COUNT(*) FROM cd.members WHERE cd.members.recommendedby IS NOT NULL
+GROUP BY recommendedby ORDER BY recommendedby;
