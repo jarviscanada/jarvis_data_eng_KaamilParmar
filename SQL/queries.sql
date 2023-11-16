@@ -120,3 +120,11 @@ FROM cd.members mems JOIN cd.bookings books ON mems.memid=books.memid
 WHERE starttime::date>='2012-09-01'::date
 GROUP BY mems.surname, mems.firstname, books.memid
 ORDER BY books.memid;
+
+--Q23 Produce a list of member names, with each row containing the total member count
+SELECT COUNT(*) over(), firstname, surname
+FROM cd.members
+ORDER BY joindate;
+
+--Q24  Produce a numbered list of members
+SELECT row_number() over(), firstname, surname FROM cd.members;
