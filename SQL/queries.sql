@@ -135,5 +135,9 @@ select facid, total from (
                              from cd.bookings
                              group by facid
                          ) as ranked
-where rank = 1
+where rank = 1;
+
+--String
+--Q26 Format the names of members
+SELECT CONCAT(surname, ', ',firstname) as name FROM cd.members;
 
