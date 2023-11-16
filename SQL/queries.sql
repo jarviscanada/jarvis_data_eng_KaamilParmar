@@ -141,3 +141,7 @@ where rank = 1;
 --Q26 Format the names of members
 SELECT CONCAT(surname, ', ',firstname) as name FROM cd.members;
 
+--Q7  Find telephone numbers with parentheses
+SELECT memid, telephone FROM cd.members WHERE telephone LIKE '%(%)%';
+
+
