@@ -141,7 +141,11 @@ where rank = 1;
 --Q26 Format the names of members
 SELECT CONCAT(surname, ', ',firstname) as name FROM cd.members;
 
---Q7  Find telephone numbers with parentheses
+--Q27  Find telephone numbers with parentheses
 SELECT memid, telephone FROM cd.members WHERE telephone LIKE '%(%)%';
 
-
+--Q28 Count the number of members whose surname starts with each letter of the alphabet
+SELECT SUBSTR(surname, 1, 1) as letter, COUNT(*)
+FROM cd.members
+GROUP BY letter
+ORDER BY letter;
