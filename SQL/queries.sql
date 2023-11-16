@@ -145,7 +145,7 @@ SELECT CONCAT(surname, ', ',firstname) as name FROM cd.members;
 SELECT memid, telephone FROM cd.members WHERE telephone LIKE '%(%)%';
 
 --Q28 Count the number of members whose surname starts with each letter of the alphabet
-SELECT SUBSTR(surname, 1, 1) as letter, COUNT(*)
+SELECT SUBSTR(surname, 1, 1) as letter, COUNT(*)d
 FROM cd.members
 GROUP BY letter
 ORDER BY letter;
