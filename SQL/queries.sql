@@ -110,3 +110,13 @@ FROM cd.bookings
 WHERE starttime::date>='2012-01-01' AND starttime::date<='2012-12-31'
 GROUP BY facid, month
 ORDER BY facid, month;
+
+--Q21  Find the count of members who have made at least one booking
+SELECT COUNT(DISTINCT memid) as count FROM cd.bookings;
+
+--Q22  List each member's first booking after September 1st 2012
+SELECT surname, firstname, books.memid, MIN(starttime)
+FROM cd.members mems JOIN cd.bookings books ON mems.memid=books.memid
+WHERE starttime::date>='2012-09-01'::date
+GROUP BY mems.surname, mems.firstname, books.memid
+ORDER BY books.memid;
