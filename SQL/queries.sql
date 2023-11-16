@@ -128,3 +128,12 @@ ORDER BY joindate;
 
 --Q24  Produce a numbered list of members
 SELECT row_number() over(), firstname, surname FROM cd.members;
+
+--Q25 Output the facility id that has the highest number of slots booked, again (soln from pgexercises site)
+select facid, total from (
+                             select facid, sum(slots) total, rank() over (order by sum(slots) desc) rank
+                             from cd.bookings
+                             group by facid
+                         ) as ranked
+where rank = 1
+
