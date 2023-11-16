@@ -91,6 +91,15 @@ FROM
 ORDER BY
     member;
 
+--Aggregation
 --Q17  Count the number of recommendations each member makes.
 SELECT recommendedby, COUNT(*) FROM cd.members WHERE cd.members.recommendedby IS NOT NULL
 GROUP BY recommendedby ORDER BY recommendedby;
+
+--Q18  List the total slots booked per facility
+SELECT facid, SUM(slots) as TotalSlots FROM cd.bookings GROUP BY cd.bookings.facid ORDER BY cd.bookings.facid;
+
+--Q19  List the total slots booked per facility in a given month
+SELECT facid, SUM(slots) as TotalSlots FROM cd.bookings
+WHERE starttime::date>='2012-09-01'::date AND starttime::date<='2012-10-30'::date
+GROUP BY cd.bookings.facid ORDER BY SUM(slots);
