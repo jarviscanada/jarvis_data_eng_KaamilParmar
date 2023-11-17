@@ -1,7 +1,7 @@
 # Introduction
 This project works with SQL tables and corresponding queries to perform on the schema all in a queries.sql file. These tables are established 
 within a PostgreSQL instance, which is deployed through a Docker container. The execution of queries can take place 
-externally to the database by utilizing queries.sql. In my case, the queries were written and executed on dbeaver.
+externally to the database by utilizing queries.sql. In my case, the queries were written and executed on DBeaver.
 The objective of this project is to demonstrate the structure of SQL tables and the methodologies of making and executing queries in PostgreSQL,
 The queries are all exercises from pgexercise, and it is assumed the given schema is set up in a database prior to 
 executing and writing the queries (Setup provided here in the README.md). The query exercises showcase various important
