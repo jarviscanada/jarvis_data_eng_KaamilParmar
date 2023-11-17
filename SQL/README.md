@@ -1,7 +1,13 @@
 # Introduction
-
+This project has numerous SQL tables and corresponding queries all in a queries.sql file. These tables are established 
+within a PostgreSQL instance, which is deployed through a Docker container. The execution of queries can take place 
+externally to the database by utilizing queries.sql. In my case, the queries were written and executed on dbeaver.
+The objective is to demonstrate the structure of SQL tables and methodologies of making and executing queries in PostgreSQL,
+The queries are all exercises from pgexercise, and it is assumed the given schema is set up in a database prior to 
+executing and writing the queries (Setup provided here in the README.md). The query exercises showcase various important
+SQL techniques from CRUD, Joins, Aggregate Functions, Strings, and other advanced queries.
 # Table Setup
-```postgresql
+```sql
 CREATE TABLE cd.members (
     memid INTEGER NOT NULL NOT NULL,
     surname character varying(200) NOT NULL,
