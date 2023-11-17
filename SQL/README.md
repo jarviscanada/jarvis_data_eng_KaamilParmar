@@ -1,8 +1,8 @@
 # Introduction
-This project has numerous SQL tables and corresponding queries all in a queries.sql file. These tables are established 
+This project works with SQL tables and corresponding queries to perform on the schema all in a queries.sql file. These tables are established 
 within a PostgreSQL instance, which is deployed through a Docker container. The execution of queries can take place 
 externally to the database by utilizing queries.sql. In my case, the queries were written and executed on dbeaver.
-The objective is to demonstrate the structure of SQL tables and methodologies of making and executing queries in PostgreSQL,
+The objective of this project is to demonstrate the structure of SQL tables and the methodologies of making and executing queries in PostgreSQL,
 The queries are all exercises from pgexercise, and it is assumed the given schema is set up in a database prior to 
 executing and writing the queries (Setup provided here in the README.md). The query exercises showcase various important
 SQL techniques from CRUD, Joins, Aggregate Functions, Strings, and other advanced queries.
@@ -161,15 +161,85 @@ FROM
 ORDER BY
     member;
 ```
-
+###### Aggregation
 ###### Q17  Count the number of recommendations each member makes.
 ```sql
 SELECT recommendedby, COUNT(*) FROM cd.members WHERE cd.members.recommendedby IS NOT NULL
 GROUP BY recommendedby ORDER BY recommendedby;
 ```
 
-###### Q9  Matching against multiple possible values
+###### Q18  List the total slots booked per facility
 ```sql
-SELECT * FROM cd.facilities WHERE facid IN (1,5);
+SELECT facid, SUM(slots) as TotalSlots FROM cd.bookings GROUP BY cd.bookings.facid ORDER BY cd.bookings.facid;
+```
+
+###### Q19  List the total slots booked per facility in a given month
+```sql
+SELECT facid, SUM(slots) as TotalSlots FROM cd.bookings
+WHERE starttime::date>='2012-09-01'::date AND starttime::date<='2012-10-30'::date
+GROUP BY cd.bookings.facid ORDER BY SUM(slots);
+```
+
+###### Q20  List the total slots booked per facility per month
+```sql
+SELECT facid, EXTRACT(MONTH FROM starttime) AS month, SUM(slots)
+FROM cd.bookings
+WHERE starttime::date>='2012-01-01' AND starttime::date<='2012-12-31'
+GROUP BY facid, month
+ORDER BY facid, month;
+```
+
+###### Q21  Find the count of members who have made at least one booking
+```sql
+SELECT COUNT(DISTINCT memid) as count FROM cd.bookings;
+```
+
+###### Q22  List each member's first booking after September 1st 2012
+```sql
+SELECT surname, firstname, books.memid, MIN(starttime)
+FROM cd.members mems JOIN cd.bookings books ON mems.memid=books.memid
+WHERE starttime::date>='2012-09-01'::date
+GROUP BY mems.surname, mems.firstname, books.memid
+ORDER BY books.memid;
+```
+
+###### Q23 Produce a list of member names, with each row containing the total member count
+```sql
+SELECT COUNT(*) over(), firstname, surname
+FROM cd.members
+ORDER BY joindate;
+```
+
+###### Q24  Produce a numbered list of members
+```sql
+SELECT row_number() over(), firstname, surname FROM cd.members;
+```
+
+###### Q25 Output the facility id that has the highest number of slots booked, again (soln from pgexercises site)
+```sql
+select facid, total from (
+                             select facid, sum(slots) total, rank() over (order by sum(slots) desc) rank
+                             from cd.bookings
+                             group by facid
+                         ) as ranked
+where rank = 1;
+```
+###### String
+###### Q26 Format the names of members
+```sql
+SELECT CONCAT(surname, ', ',firstname) as name FROM cd.members;
+```
+
+###### Q27  Find telephone numbers with parentheses
+```sql
+SELECT memid, telephone FROM cd.members WHERE telephone LIKE '%(%)%';
+```
+
+###### Q28 Count the number of members whose surname starts with each letter of the alphabet
+```sql
+SELECT SUBSTR(surname, 1, 1) as letter, COUNT(*)
+FROM cd.members
+GROUP BY letter
+ORDER BY letter;
 ```
 
