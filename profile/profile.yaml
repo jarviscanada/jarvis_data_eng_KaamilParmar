@@ -115,7 +115,7 @@ education:
     department: "Computer Science"
     # optional
     awards_achievements:
-      - " "
+      - "   "
 #  - school_name: "XYZ university"
 #    duration: "2016-2018"
 #    degree: "Master of Engineering"
