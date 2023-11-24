@@ -5,8 +5,7 @@ github_repo_root_url: https://github.com/jarviscanada/jarvis_data_eng_KaamilParm
 
 # Introduce yourself, your academic and professional background.
 # What excites you about the software industry and your passion. At least 80 words
-summary: I am a Computer Science graduate from York University with a passion for coding, software development, and technology. Prior to Jarvis, I've gotten experience in the software industry through contract work, honing my skills in full stack development. Primarily building MVPs using MERN stack for startup companies. What truly excites me is the opportunity to contribute to building applications that make a real-world impact. There's a passion in problem-solving through code, it's like unraveling a complex puzzle, and the satisfaction of seeing lines of logic come to life is unbeatable. From my experience, I am experienced in Full Stack Development, but am also eager to take on other roles after my experience at Jarvis.
-# Group your skills by level.
+summary: I am a Computer Science graduate from York University with a passion for coding, software development, and technology. Throughout my education at York University, I developed strong analytical, problem-solving, and coding skills. Additionally, I also cultivated a strong understanding of fundamental topics such as data structures, algorithms, and software design. Prior to Jarvis, I acquired valuable experience in the software industry through contract work, specializing in full stack development. I successfully contributed to the development of web applications and MVPs, showcasing expertise in building robust and scalable software. The most notable of these is my work at InspoBoard as a full stack developer. By leveraging my solid academic foundation in Computer Science and my established track record as a developer, I am confident to take on a role that demands technical expertise and utilization of a diverse range of technologies.# Group your skills by level.
 # Your skills can be anything software related (e.g. language, frameworks, methodologies, software, etc.).
 skills:
   # At least 5 skills
@@ -50,7 +49,7 @@ jarvis_projects:
     git_url: "https://github.com/jarviscanada/jarvis_data_eng_KaamilParmar/tree/main/linux_sql"
     # The project description allows hiring managers to understand your project and technologies you used(e.g. programming languages, libraries, algorithms, hardware, tools, etc.).
     # The project description must start with an action verb (https://bit.ly/3guO98u)
-    description:     Implemented a Bash-based monitoring agent to consistently track and store hardware specs and usage data of host machines. Deployed the application on Docker, syncing data with a PostgreSQL database. Conducted operations on a CentOS virtual machine hosted on Google Cloud Platform. Automated data collection using crontab for regular updates. Tested the system functionality through command-line interface (CLI) for robust performance.
+    description: Implemented a Bash-based monitoring agent to consistently track and store hardware specs and usage data of host machines. Deployed the application on Docker, syncing data with a PostgreSQL database. Conducted operations on a CentOS virtual machine hosted on Google Cloud Platform. Automated data collection using crontab for regular updates. Tested the system functionality through command-line interface (CLI) for robust performance.
 
   - name: "SQL Queries"
     git_url: "https://github.com/jarviscanada/jarvis_data_eng_KaamilParmar/tree/main/linux_sql"
