@@ -5,7 +5,7 @@ github_repo_root_url: https://github.com/jarviscanada/jarvis_data_eng_KaamilParm
 
 # Introduce yourself, your academic and professional background.
 # What excites you about the software industry and your passion. At least 80 words
-summary: Hey there, I'm Kaamil! I am a Computer Science graduate from York University with a passion for coding, software development, and technology. Prior to Jarvis, I've gotten experience in the software industry through contract work, honing my skills in full stack development. Primarily building MVPs using MERN stack for startup companies. What truly excites me is the opportunity to contribute to building applications that make a real-world impact. There's a passion in problem-solving through code, it's like unraveling a complex puzzle, and the satisfaction of seeing lines of logic come to life is unbeatable. From my experience, I am experienced in Full Stack Development, but am also eager to take on other roles after my experience at Jarvis.
+summary: I am a Computer Science graduate from York University with a passion for coding, software development, and technology. Prior to Jarvis, I've gotten experience in the software industry through contract work, honing my skills in full stack development. Primarily building MVPs using MERN stack for startup companies. What truly excites me is the opportunity to contribute to building applications that make a real-world impact. There's a passion in problem-solving through code, it's like unraveling a complex puzzle, and the satisfaction of seeing lines of logic come to life is unbeatable. From my experience, I am experienced in Full Stack Development, but am also eager to take on other roles after my experience at Jarvis.
 # Group your skills by level.
 # Your skills can be anything software related (e.g. language, frameworks, methodologies, software, etc.).
 skills:
@@ -22,8 +22,7 @@ skills:
     - Express
     - HTML/CSS
     - Python
-    - VSCode
-    - IntelliJ
+  
   # At least 5 skills
   competent:
     - Scala
@@ -32,7 +31,6 @@ skills:
     - Springboot
     - Docker
     - Github Actions
-    - Dr. Java
     - Mocha
     - JUnit
     - Swing
@@ -52,7 +50,14 @@ jarvis_projects:
     git_url: "https://github.com/jarviscanada/jarvis_data_eng_KaamilParmar/tree/main/linux_sql"
     # The project description allows hiring managers to understand your project and technologies you used(e.g. programming languages, libraries, algorithms, hardware, tools, etc.).
     # The project description must start with an action verb (https://bit.ly/3guO98u)
-    description: Implemented a monitoring agent in Bash to consistently track and store hardware specs and usage data of host machines over time. This application syncs with a Postgres database, stored in a Docker container. Testing was conducted on a CentOS virtual machine hosted on the Google Cloud Platform, with debugging done on IntelliJ and CLI terminal.
+    description:     Implemented a Bash-based monitoring agent to consistently track and store hardware specs and usage data of host machines. Deployed the application on Docker, syncing data with a PostgreSQL database. Conducted operations on a CentOS virtual machine hosted on Google Cloud Platform. Automated data collection using crontab for regular updates. Tested the system functionality through command-line interface (CLI) for robust performance.
+
+  - name: "SQL Queries"
+    git_url: "https://github.com/jarviscanada/jarvis_data_eng_KaamilParmar/tree/main/linux_sql"
+    # The project description allows hiring managers to understand your project and technologies you used(e.g. programming languages, libraries, algorithms, hardware, tools, etc.).
+    # The project description must start with an action verb (https://bit.ly/3guO98u)
+    description: Implemented and executed SQL queries on PostgreSQL tables within a Docker container. Utilized DBeaver for query execution, focusing on exercises from pgexercise. Demonstrated proficiency in CRUD operations, Joins, Aggregate Functions, and advanced SQL techniques. Emphasized database setup and schema understanding for effective query execution.
+  #
 #  - name: "Core Java Apps"
 #    git_url: "/core_java"
 #    description:
@@ -79,14 +84,15 @@ jarvis_projects:
 # Feel free to add more projects
 highlighted_projects:
     #project name
+  - name: "E-Commerce Application"
+    git_url: "https://github.com/klparmar/react-ecomm-stripe-proj"
+    description: Deployed a responsive, dynamic, and mobile-adaptive FullStack web application for E-commerce, utilizing Javascript, Java Spring and Bootstrap as a platform for businesses to sell products
+
   - name: "Retro Video Games in Java"
     #URL is optional
     git_url: "https://github.com/klparmar/Java-Projects"
     # The project description must start with an action verb (https://bit.ly/3guO98u)
     description: Created various interactive gaming applications utilizing numerous Java libraries such as Atari Breakout, Space Invaders, Frogger, and Pong.
-  - name: "E-Commerce Application"
-    git_url: "https://github.com/klparmar/react-ecomm-stripe-proj"
-    description: Deployed a responsive, dynamic, and mobile-adaptive FullStack web application for E-commerce, utilizing Javascript, Java Spring and Bootstrap as a platform for businesses to sell products
 
 #List of professional experience
 #The job description allows hiring managers to understand your job and the technologies you used(e.g. programming languages, libraries, algorithms, hardware, tools, etc.).
@@ -110,7 +116,7 @@ education:
     department: "Computer Science"
     # optional
     awards_achievements:
-      - "CodeFI Club Hackathon"
+      - " "
 #  - school_name: "XYZ university"
 #    duration: "2016-2018"
 #    degree: "Master of Engineering"
