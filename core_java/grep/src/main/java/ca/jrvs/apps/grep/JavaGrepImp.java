@@ -99,22 +99,16 @@ public class JavaGrepImp implements JavaGrep {
 
     @Override
     public void writeToFile(List<String> lines) throws IOException {
+        FileOutputStream fos = new FileOutputStream(this.getOutFile());
+        OutputStreamWriter osw = new OutputStreamWriter(fos);
+        BufferedWriter writer = new BufferedWriter(osw);
 
-        try (
-                FileOutputStream fos = new FileOutputStream(this.getOutFile());
-             OutputStreamWriter osw = new OutputStreamWriter(fos);
-             BufferedWriter writer = new BufferedWriter(osw)
-        ) {
-
-            for (String line : lines) {
-                writer.write(line);
-                writer.newLine();
-            }
-
-        } catch (IOException e) {
-            // Handle IOException, e.g., log or throw an exception
-            logger.error("IOException occurred: "+e);
+        for (String line : lines) {
+            writer.write(line);
+            writer.newLine();
         }
+
+        writer.close();
     }
 
     @Override
