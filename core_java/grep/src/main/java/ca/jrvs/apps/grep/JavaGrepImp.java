@@ -1,16 +1,21 @@
 package ca.jrvs.apps.grep;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
+import java.io.*;
+import java.util.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 public class JavaGrepImp implements JavaGrep {
+
+    private final Logger logger = LoggerFactory.getLogger(JavaGrepImp.class);
 
     private String regex;
     private String rootPath;
     private String outFile;
+
+
 
 
     @Override
@@ -47,17 +52,48 @@ public class JavaGrepImp implements JavaGrep {
 
     @Override
     public List<String> readLines(File inputFile) {
+        List<String> lines = new ArrayList<>();
+
+        try (FileReader fileReader = new FileReader(inputFile);
+             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                lines.add(line);
+            }
+
+        } catch (IOException  FileNotFoundException ) {
+            logger.error("An exception occurred");
+        }
         return null;
     }
 
     @Override
     public boolean containsPattern(String line) {
-        return false;
+        Pattern pattern = Pattern.compile(this.getRegex());
+        Matcher matcher = pattern.matcher(line);
+
+        return matcher.find();
     }
 
     @Override
     public void writeToFile(List<String> lines) throws IOException {
 
+        try (
+                FileOutputStream fos = new FileOutputStream(this.getOutFile());
+             OutputStreamWriter osw = new OutputStreamWriter(fos);
+             BufferedWriter writer = new BufferedWriter(osw)
+        ) {
+
+            for (String line : lines) {
+                writer.write(line);
+                writer.newLine();
+            }
+
+        } catch (IOException e) {
+            // Handle IOException, e.g., log or throw an exception
+            logger.error("IOException occured");
+        }
     }
 
     @Override
