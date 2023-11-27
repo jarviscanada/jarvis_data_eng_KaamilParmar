@@ -6,8 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.log4j.BasicConfigurator;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.regex.*;
 public class JavaGrepImp implements JavaGrep {
 
     private final Logger logger = LoggerFactory.getLogger(JavaGrepImp.class);
@@ -51,14 +50,13 @@ public class JavaGrepImp implements JavaGrep {
     public List<File> listFiles(String rootDir) {
         File current = new File(rootDir);
         List<File> foundFiles= new ArrayList<>();
-        File[] currFiles;
 
         if(current.isDirectory()){
-            currFiles = current.listFiles();
+            File[] currFiles = current.listFiles();
             assert currFiles != null;
             for(File file: currFiles){
                 if(file.isDirectory())
-                    listFiles(file.getAbsolutePath());
+                    foundFiles.addAll(listFiles(file.getAbsolutePath()));
                 else if (file.isFile())
                     foundFiles.add(file);
             }
@@ -82,15 +80,21 @@ public class JavaGrepImp implements JavaGrep {
         } catch (IOException  FileNotFoundException ) {
             logger.error("An exception occurred");
         }
-        return null;
+        return lines;
     }
 
     @Override
     public boolean containsPattern(String line) {
-        Pattern pattern = Pattern.compile(this.getRegex());
-        Matcher matcher = pattern.matcher(line);
+        try{
+            Pattern pattern = Pattern.compile(this.getRegex());
+            Matcher matcher = pattern.matcher(line);
+            return matcher.find();
+        }
+        catch(PatternSyntaxException e){
+            logger.error("Incorrect REGEX syntax");
+        }
 
-        return matcher.find();
+        return false;
     }
 
     @Override
@@ -109,7 +113,7 @@ public class JavaGrepImp implements JavaGrep {
 
         } catch (IOException e) {
             // Handle IOException, e.g., log or throw an exception
-            logger.error("IOException occured");
+            logger.error("IOException occurred: "+e);
         }
     }
 
