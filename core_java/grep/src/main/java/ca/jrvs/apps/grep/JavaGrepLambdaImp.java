@@ -56,24 +56,14 @@ public class JavaGrepLambdaImp extends JavaGrepImp{
     public List<String> readLines(File inputFile) {
         List<String> lines = new ArrayList<>();
 
-        try (FileReader fileReader = new FileReader(inputFile);
-             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
-
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                lines.add(line);
-            }
-
-        } catch (IOException  FileNotFoundException ) {
+        try (Stream<String> fileLines = Files.lines(inputFile.toPath()) ) {
+            fileLines.forEach(lines::add);
+        } catch (IOException e) {
             logger.error("An exception occurred");
         }
         return lines;
     }
 
-    @Override
-    public boolean containsPattern(String line) {
-        return super.containsPattern(line);
-    }
 
     @Override
     public void writeToFile(List<String> lines) throws IOException {
