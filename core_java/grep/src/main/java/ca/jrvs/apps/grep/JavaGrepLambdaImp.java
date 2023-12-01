@@ -4,9 +4,7 @@ import org.apache.log4j.BasicConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +34,20 @@ public class JavaGrepLambdaImp extends JavaGrepImp{
         } catch (Exception ex) {
             JavaGrepLambdaImp.logger.error("Unable to process regex");
         }
+    }
+
+    @Override
+    public void process() throws IOException {
+        ArrayList<String> matchedLines = new ArrayList<>();
+
+        Stream<File> listOfFiles= listFiles(this.getRootPath()).stream();
+
+        listOfFiles.forEach(file ->
+                readLines(file).stream().filter(this::containsPattern)
+                        .forEach(matchedLines::add)
+        );
+
+        writeToFile(matchedLines);
     }
 
     @Override
