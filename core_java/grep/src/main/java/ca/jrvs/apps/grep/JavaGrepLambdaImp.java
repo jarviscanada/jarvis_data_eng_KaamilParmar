@@ -4,7 +4,9 @@ import org.apache.log4j.BasicConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.stream.Stream;
 import java.nio.file.Paths;
 
 public class JavaGrepLambdaImp extends JavaGrepImp{
+    private static final Logger logger = LoggerFactory.getLogger(JavaGrepLambdaImp.class);
 
     public static void main(String[] args) {
         if(args.length != 3)
@@ -31,10 +34,9 @@ public class JavaGrepLambdaImp extends JavaGrepImp{
         try {
             javaGrepLambdaImp.process();
         } catch (Exception ex) {
-
+            JavaGrepLambdaImp.logger.error("Unable to process regex");
         }
     }
-    private final Logger logger = LoggerFactory.getLogger(JavaGrepLambdaImp.class);
 
     @Override
     public List<File> listFiles(String rootDir) {
@@ -52,7 +54,20 @@ public class JavaGrepLambdaImp extends JavaGrepImp{
 
     @Override
     public List<String> readLines(File inputFile) {
-        return super.readLines(inputFile);
+        List<String> lines = new ArrayList<>();
+
+        try (FileReader fileReader = new FileReader(inputFile);
+             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                lines.add(line);
+            }
+
+        } catch (IOException  FileNotFoundException ) {
+            logger.error("An exception occurred");
+        }
+        return lines;
     }
 
     @Override
