@@ -54,9 +54,7 @@ public class LambdaStreamExcImp implements LambdaStreamExc{
      */
     @Override
     public Stream<String> filter(Stream<String> stringStream, String pattern) {
-        Pattern regexPat = Pattern.compile(pattern);
-        Matcher matcher = regexPat.matcher(pattern);
-        return stringStream.filter();
+        return stringStream.filter(str -> !str.contains(pattern));
     }
 
     /**
@@ -67,7 +65,7 @@ public class LambdaStreamExcImp implements LambdaStreamExc{
      */
     @Override
     public IntStream createIntStream(int[] arr) {
-        return null;
+        return Arrays.stream(arr);
     }
 
     /**
@@ -78,7 +76,8 @@ public class LambdaStreamExcImp implements LambdaStreamExc{
      */
     @Override
     public <E> List<E> toList(Stream<E> stream) {
-        return null;
+        List<E> list = stream.collect(Collectors.toList());
+        return list;
     }
 
     /**
