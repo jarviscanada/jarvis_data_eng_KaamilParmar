@@ -149,7 +149,7 @@ public class LambdaStreamExcImp implements LambdaStreamExc{
      */
     @Override
     public Consumer<String> getLambdaPrinter(String prefix, String suffix) {
-        return null;
+        return str -> System.out.println(prefix+str+suffix);
     }
 
     /**
@@ -170,7 +170,7 @@ public class LambdaStreamExcImp implements LambdaStreamExc{
      */
     @Override
     public void printMessages(String[] messages, Consumer<String> printer) {
-
+        createStrStream(messages).forEach(printer);
     }
 
     /**
@@ -190,7 +190,7 @@ public class LambdaStreamExcImp implements LambdaStreamExc{
      */
     @Override
     public void printOdd(IntStream intStream, Consumer<String> printer) {
-
+        getOdd(intStream).mapToObj(Integer::toString).forEach(printer);
     }
 
     /**
@@ -203,6 +203,8 @@ public class LambdaStreamExcImp implements LambdaStreamExc{
      */
     @Override
     public Stream<Integer> flatNestedInt(Stream<List<Integer>> ints) {
-        return null;
+        Stream<Integer> ting = ints.flatMap(List::stream);
+
+        return ting.map(num -> num*num);
     }
 }
