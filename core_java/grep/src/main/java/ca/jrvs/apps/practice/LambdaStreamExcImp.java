@@ -88,7 +88,8 @@ public class LambdaStreamExcImp implements LambdaStreamExc{
      */
     @Override
     public List<Integer> toList(IntStream intStream) {
-        return null;
+        List<Integer> list = intStream.boxed().collect(Collectors.toList());
+        return list;
     }
 
     /**
@@ -100,7 +101,7 @@ public class LambdaStreamExcImp implements LambdaStreamExc{
      */
     @Override
     public IntStream createIntStream(int start, int end) {
-        return null;
+        return IntStream.range(start, end);
     }
 
     /**
@@ -112,7 +113,7 @@ public class LambdaStreamExcImp implements LambdaStreamExc{
      */
     @Override
     public DoubleStream squareRootIntStream(IntStream intStream) {
-        return null;
+        return intStream.asDoubleStream().map(Math::sqrt);
     }
 
     /**
@@ -123,7 +124,7 @@ public class LambdaStreamExcImp implements LambdaStreamExc{
      */
     @Override
     public IntStream getOdd(IntStream intStream) {
-        return null;
+        return intStream.filter(num -> num % 2 != 0);
     }
 
     /**
