@@ -6,11 +6,13 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.stream.Stream;
 import java.nio.file.Paths;
 
@@ -79,6 +81,8 @@ public class JavaGrepLambdaImp extends JavaGrepImp{
 
     @Override
     public void writeToFile(List<String> lines) throws IOException {
-        super.writeToFile(lines);
+        Path path = Paths.get(this.getOutFile());
+
+        Files.write(path, lines, StandardCharsets.UTF_8, StandardOpenOption.CREATE);
     }
 }
