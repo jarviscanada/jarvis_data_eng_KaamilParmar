@@ -57,12 +57,12 @@ jarvis_projects:
     # The project description must start with an action verb (https://bit.ly/3guO98u)
     description: Implemented and executed SQL queries on PostgreSQL tables within a Docker container. Utilized DBeaver for query execution, focusing on exercises from pgexercise. Demonstrated proficiency in CRUD operations, Joins, Aggregate Functions, and advanced SQL techniques. Emphasized database setup and schema understanding for effective query execution.
   #
-#  - name: "Core Java Apps"
-#    git_url: "/core_java"
-#    description:
-#      - ""
-#      - ""
-#      - ""
+  - name: "Core Java Apps"
+    git_url: "/core_java"
+    description:
+      - GREP APP: Developed a counterpart to the grep Linux command line utility using Java, incorporating Lambda and Stream APIs in the implementation. Employed Maven for packaging the application and subsequently deployed it on Docker Hub through Docker
+      - ""
+      - ""
 #  - name: "Springboot App"
 #    git_url: "/springboot"
 #    description: ""
