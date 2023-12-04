@@ -44,10 +44,14 @@ allow functional programming, supporting map-reduce transformations on collectio
 optimize, adjusting the JVM heap size aids in addressing memory concerns during the processing of extensive files.
 
 # Test
-How did you test your application manually? (e.g. prepare sample data, run some test cases manually, compare result)
-
+Testing was done through the Logger instance to handles errors and ensure functionality during implementation.
+Furthermore, after implementation, different comand-line arguments were tested.
 # Deployment
-How you dockerize your app for easier distribution?
+There is a docker file provided which contains the commands needed to create a docker image of the app. Be sure to
+compile and clean the maven project first and the shade plugin if it is not already present.
+After, the image can be created from the docker file and then run locally or added to your
+docker hub profile.
+
 
 # Improvement
 List three things you can improve in this project.
