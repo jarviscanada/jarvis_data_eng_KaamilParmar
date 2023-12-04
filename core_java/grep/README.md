@@ -28,7 +28,7 @@ This app essentially uses a process method that streamlines the sequence of oper
 The pseudocode for the process method is outlined below:
 
 ## Pseudocode
-```java
+```
 matchedLines = []
 for file in listFilesRecursively(rootDir)
   for line in readLines(file)
@@ -45,7 +45,7 @@ optimize, adjusting the JVM heap size aids in addressing memory concerns during 
 
 # Test
 Testing was done through the Logger instance to handles errors and ensure functionality during implementation.
-Furthermore, after implementation, different comand-line arguments were tested.
+Furthermore, after implementation, different command-line arguments were tested.
 # Deployment
 There is a docker file provided which contains the commands needed to create a docker image of the app. Be sure to
 compile and clean the maven project first and the shade plugin if it is not already present.
@@ -54,4 +54,6 @@ docker hub profile.
 
 
 # Improvement
-List three things you can improve in this project.
+1. Figure out how to Minimize the utilization of heap memory as much as possible.
+2. Change/Make a new interface for Lambda and Stream APIs implementation
+3. Make even more test cases, utilizing black box testing.
