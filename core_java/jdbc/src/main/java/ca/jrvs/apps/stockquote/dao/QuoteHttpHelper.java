@@ -2,6 +2,7 @@ package ca.jrvs.apps.stockquote.dao;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.OkHttpClient;
 
@@ -43,10 +44,13 @@ public class QuoteHttpHelper {
                 .build();
         try {
             HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-            String JSONresp = response.body();
+
+            System.out.println(response.body());
             ObjectMapper om = new ObjectMapper();
 
-            quote = om.readValue(JSONresp, Quote.class);
+            JsonNode jsonNode = om.readTree(response.body());
+
+            quote = om.treeToValue(jsonNode.get("Global Quote"), Quote.class);
 
             System.out.println(response.body()+"\n e"+ quote.getTicker());
         } catch (InterruptedException e) {
@@ -60,6 +64,6 @@ public class QuoteHttpHelper {
         }
 
 
-        return null;
+        return quote;
     }
 }
