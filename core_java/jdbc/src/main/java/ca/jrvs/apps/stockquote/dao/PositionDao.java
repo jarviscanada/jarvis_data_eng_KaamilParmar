@@ -1,10 +1,9 @@
-package jdbc;
+package ca.jrvs.apps.stockquote.dao;
 
 import java.sql.Connection;
 import java.util.Optional;
 
-public class QuoteDao implements CrudDao<Quote, String> {
-
+public class PositionDao implements CrudDao<Position, String>{
     private Connection c;
 
     /**
@@ -15,7 +14,7 @@ public class QuoteDao implements CrudDao<Quote, String> {
      * @throws IllegalArgumentException - if id is null
      */
     @Override
-    public Quote save(Quote entity) throws IllegalArgumentException {
+    public Position save(Position entity) throws IllegalArgumentException {
         return null;
     }
 
@@ -27,7 +26,7 @@ public class QuoteDao implements CrudDao<Quote, String> {
      * @throws IllegalArgumentException - if id is null
      */
     @Override
-    public Optional<Quote> findById(String s) throws IllegalArgumentException {
+    public Optional<Position> findById(String s) throws IllegalArgumentException {
         return Optional.empty();
     }
 
@@ -37,7 +36,7 @@ public class QuoteDao implements CrudDao<Quote, String> {
      * @return All entities
      */
     @Override
-    public Iterable<Quote> findAll() {
+    public Iterable<Position> findAll() {
         return null;
     }
 
@@ -62,5 +61,4 @@ public class QuoteDao implements CrudDao<Quote, String> {
 
     //implement all inherited methods
     //you are not limited to methods defined in CrudDao
-
 }

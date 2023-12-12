@@ -1,4 +1,4 @@
-package jdbc;
+package ca.jrvs.apps.stockquote.dao;
 import java.util.Optional;
 
 public interface CrudDao<T, ID> {

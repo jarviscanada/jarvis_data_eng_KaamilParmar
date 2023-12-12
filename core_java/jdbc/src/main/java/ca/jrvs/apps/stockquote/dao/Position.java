@@ -1,4 +1,4 @@
-package jdbc;
+package ca.jrvs.apps.stockquote.dao;
 
 public class Position {
     private String ticker; //id

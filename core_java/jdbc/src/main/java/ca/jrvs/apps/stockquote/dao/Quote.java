@@ -1,4 +1,4 @@
-package jdbc;
+package ca.jrvs.apps.stockquote.dao;
 
 import java.sql.Date;
 import java.sql.Timestamp;
