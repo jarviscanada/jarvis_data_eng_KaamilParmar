@@ -22,9 +22,19 @@ public class QuoteDao implements CrudDao<Quote, String> {
         if (entity == null) {
             throw new IllegalArgumentException("Id cannot be null");
         }
-        String sql = "";
-        try (PreparedStatement ps = c.prepareStatement(sql)) {
-            ps.setString(1, entity.getSymbol());
+        String sqlQuery = "INSERT INTO quote (symbol, open, high, low, price, volume, latest_trading_day, previous_close, change, change_percent, timestamp) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try (PreparedStatement ps = c.prepareStatement(sqlQuery)) {
+            ps.setDouble(2, entity.getOpen());
+            ps.setDouble(3, entity.getHigh());
+            ps.setDouble(4, entity.getLow());
+            ps.setDouble(5, entity.getPrice());
+            ps.setInt(6, entity.getVolume());
+            ps.setDate(7, entity.getLatestTradingDay());
+            ps.setDouble(8, entity.getPreviousClose());
+            ps.setDouble(9, entity.getChange());
+            ps.setString(10, entity.getChangePercent());
+            ps.setTimestamp(11, entity.getTimestamp());
 
             ps.executeUpdate();
 
