@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class QuoteDao implements CrudDao<Quote, String> {
@@ -23,11 +25,11 @@ public class QuoteDao implements CrudDao<Quote, String> {
         if (entity == null) {
             throw new IllegalArgumentException("Id cannot be null");
         }
-        else if(findById(entity.getTicker()).isEmpty()){
+        else if(findById(entity.getSymbol()).isEmpty()){
             String sqlQuery = "INSERT INTO quote (symbol, open, high, low, price, volume, latest_trading_day, previous_close, change, change_percent, timestamp) " +
                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             try (PreparedStatement ps = c.prepareStatement(sqlQuery)) {
-                ps.setString(1, entity.getTicker());
+                ps.setString(1, entity.getSymbol());
                 ps.setDouble(2, entity.getOpen());
                 ps.setDouble(3, entity.getHigh());
                 ps.setDouble(4, entity.getLow());
@@ -50,7 +52,7 @@ public class QuoteDao implements CrudDao<Quote, String> {
             String sqlQuery = "UPDATE quote SET symbol = ?, open = ?, high = ?, low = ?, price = ?, volume = ?, " +
                     "latest_trading_day = ?, previous_close = ?, change = ?, change_percent = ?, timestamp = ? WHERE symbol = ?";
             try (PreparedStatement ps = c.prepareStatement(sqlQuery)) {
-                ps.setString(1, entity.getTicker());
+                ps.setString(1, entity.getSymbol());
                 ps.setDouble(2, entity.getOpen());
                 ps.setDouble(3, entity.getHigh());
                 ps.setDouble(4, entity.getLow());
@@ -61,7 +63,7 @@ public class QuoteDao implements CrudDao<Quote, String> {
                 ps.setDouble(9, entity.getChange());
                 ps.setString(10, entity.getChangePercent());
                 ps.setTimestamp(11, entity.getTimestamp());
-                ps.setString(12, entity.getTicker());
+                ps.setString(12, entity.getSymbol());
 
                 ps.executeUpdate();
 
@@ -91,26 +93,30 @@ public class QuoteDao implements CrudDao<Quote, String> {
 
         String sqlQuery = "SELECT * FROM quote WHERE symbol = ?";
         try (PreparedStatement ps = c.prepareStatement(sqlQuery)) {
-            ps.setString(1, entity.getTicker());
-            ps.setDouble(2, entity.getOpen());
-            ps.setDouble(3, entity.getHigh());
-            ps.setDouble(4, entity.getLow());
-            ps.setDouble(5, entity.getPrice());
-            ps.setInt(6, entity.getVolume());
-            ps.setDate(7, entity.getLatestTradingDay());
-            ps.setDouble(8, entity.getPreviousClose());
-            ps.setDouble(9, entity.getChange());
-            ps.setString(10, entity.getChangePercent());
-            ps.setTimestamp(11, entity.getTimestamp());
-            ps.setString(12, entity.getTicker());
+            ps.setString(1, s);
 
             ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Quote quote = new Quote();
+                quote.setSymbol(rs.getString("symbol"));
+                quote.setOpen(rs.getDouble("open"));
+                quote.setHigh(rs.getDouble("high"));
+                quote.setLow(rs.getDouble("low"));
+                quote.setPrice(rs.getDouble("price"));
+                quote.setVolume(rs.getInt("volume"));
+                quote.setLatestTradingDay(rs.getDate("latest_trading_day"));
+                quote.setPreviousClose(rs.getDouble("previous_close"));
+                quote.setChange(rs.getDouble("change"));
+                quote.setChangePercent(rs.getString("change_percent"));
 
-            return entity;
+                return Optional.of(quote);
+            } else {
+                return Optional.empty();
+            }
         } catch (SQLException e) {
             throw new RuntimeException("Error saving entity: " + e.getMessage());
         }
-        return Optional.empty();
+
     }
 
     /**
@@ -120,6 +126,30 @@ public class QuoteDao implements CrudDao<Quote, String> {
      */
     @Override
     public Iterable<Quote> findAll() {
+        List<Quote> quotes = new ArrayList<>();
+
+        String sqlQuery = "SELECT * FROM quote";
+        try (PreparedStatement ps = c.prepareStatement(sqlQuery)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Quote quote = new Quote();
+                quote.setSymbol(rs.getString("symbol"));
+                quote.setOpen(rs.getDouble("open"));
+                quote.setHigh(rs.getDouble("high"));
+                quote.setLow(rs.getDouble("low"));
+                quote.setPrice(rs.getDouble("price"));
+                quote.setVolume(rs.getInt("volume"));
+                quote.setLatestTradingDay(rs.getDate("latest_trading_day"));
+                quote.setPreviousClose(rs.getDouble("previous_close"));
+                quote.setChange(rs.getDouble("change"));
+                quote.setChangePercent(rs.getString("change_percent"));
+
+                quotes.add(quote);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error saving entity: " + e.getMessage());
+        }
+
         return null;
     }
 

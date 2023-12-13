@@ -52,7 +52,7 @@ public class QuoteHttpHelper {
 
             quote = om.treeToValue(jsonNode.get("Global Quote"), Quote.class);
 
-            System.out.println(response.body()+"\n e"+ quote.getTicker());
+            System.out.println(response.body()+"\n e"+ quote.getSymbol());
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (JsonMappingException e) {
