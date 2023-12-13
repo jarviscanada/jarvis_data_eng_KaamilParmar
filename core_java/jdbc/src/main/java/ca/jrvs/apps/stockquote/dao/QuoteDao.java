@@ -97,19 +97,7 @@ public class QuoteDao implements CrudDao<Quote, String> {
 
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                Quote quote = new Quote();
-                quote.setSymbol(rs.getString("symbol"));
-                quote.setOpen(rs.getDouble("open"));
-                quote.setHigh(rs.getDouble("high"));
-                quote.setLow(rs.getDouble("low"));
-                quote.setPrice(rs.getDouble("price"));
-                quote.setVolume(rs.getInt("volume"));
-                quote.setLatestTradingDay(rs.getDate("latest_trading_day"));
-                quote.setPreviousClose(rs.getDouble("previous_close"));
-                quote.setChange(rs.getDouble("change"));
-                quote.setChangePercent(rs.getString("change_percent"));
-
-                return Optional.of(quote);
+                return Optional.of(mapQuote(rs));
             } else {
                 return Optional.empty();
             }
@@ -132,20 +120,9 @@ public class QuoteDao implements CrudDao<Quote, String> {
         try (PreparedStatement ps = c.prepareStatement(sqlQuery)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Quote quote = new Quote();
-                quote.setSymbol(rs.getString("symbol"));
-                quote.setOpen(rs.getDouble("open"));
-                quote.setHigh(rs.getDouble("high"));
-                quote.setLow(rs.getDouble("low"));
-                quote.setPrice(rs.getDouble("price"));
-                quote.setVolume(rs.getInt("volume"));
-                quote.setLatestTradingDay(rs.getDate("latest_trading_day"));
-                quote.setPreviousClose(rs.getDouble("previous_close"));
-                quote.setChange(rs.getDouble("change"));
-                quote.setChangePercent(rs.getString("change_percent"));
-
-                quotes.add(quote);
+                quotes.add(mapQuote(rs));
             }
+
         } catch (SQLException e) {
             throw new RuntimeException("Error saving entity: " + e.getMessage());
         }
@@ -161,7 +138,14 @@ public class QuoteDao implements CrudDao<Quote, String> {
      */
     @Override
     public void deleteById(String s) throws IllegalArgumentException {
-
+        try {
+            PreparedStatement ps = c.prepareStatement("DELETE FROM quote WHERE symbol = ?");
+            ps.setString(1, s);
+            ps.executeUpdate();
+        }
+        catch (SQLException e) {
+            throw new RuntimeException("Error deleting entity: " + e.getMessage());
+        }
     }
 
     /**
@@ -169,10 +153,35 @@ public class QuoteDao implements CrudDao<Quote, String> {
      */
     @Override
     public void deleteAll() {
-
+        try {
+            PreparedStatement ps = c.prepareStatement("DELETE FROM quote");
+            ps.executeUpdate();
+        }
+        catch (SQLException e) {
+            throw new RuntimeException("Error saving entity: " + e.getMessage());
+        }
     }
 
     //implement all inherited methods
     //you are not limited to methods defined in CrudDao
 
+    private Quote mapQuote(ResultSet rs) throws SQLException {
+        if (rs.next()) {
+            Quote quote = new Quote();
+            quote.setSymbol(rs.getString("symbol"));
+            quote.setOpen(rs.getDouble("open"));
+            quote.setHigh(rs.getDouble("high"));
+            quote.setLow(rs.getDouble("low"));
+            quote.setPrice(rs.getDouble("price"));
+            quote.setVolume(rs.getInt("volume"));
+            quote.setLatestTradingDay(rs.getDate("latest_trading_day"));
+            quote.setPreviousClose(rs.getDouble("previous_close"));
+            quote.setChange(rs.getDouble("change"));
+            quote.setChangePercent(rs.getString("change_percent"));
+
+            return quote;
+        } else {
+            return null;
+        }
+    }
 }
