@@ -1,6 +1,8 @@
 package ca.jrvs.apps.stockquote.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Optional;
 
 public class QuoteDao implements CrudDao<Quote, String> {
@@ -16,7 +18,23 @@ public class QuoteDao implements CrudDao<Quote, String> {
      */
     @Override
     public Quote save(Quote entity) throws IllegalArgumentException {
-        return null;
+
+        if (entity == null) {
+            throw new IllegalArgumentException("Id cannot be null");
+        }
+        String sql = "";
+        try (PreparedStatement ps = c.prepareStatement(sql)) {
+            ps.setString(1, entity.getSymbol());
+
+            ps.executeUpdate();
+
+            return entity;
+        } catch (SQLException e) {
+            throw new RuntimeException("Error saving entity: " + e.getMessage());
+        }
+
+
+
     }
 
     /**

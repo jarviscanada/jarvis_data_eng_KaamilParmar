@@ -6,12 +6,12 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Quote {
-    public String getTicker() {
-        return ticker;
+    public String getSymbol() {
+        return symbol;
     }
 
-    public void setTicker(String ticker) {
-        this.ticker = ticker;
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
     }
 
     public double getOpen() {
@@ -95,7 +95,7 @@ public class Quote {
     }
 
     @JsonProperty("01. symbol")
-    private String ticker; //id
+    private String symbol; //id
 
     @JsonProperty("02. open")
     private double open;
