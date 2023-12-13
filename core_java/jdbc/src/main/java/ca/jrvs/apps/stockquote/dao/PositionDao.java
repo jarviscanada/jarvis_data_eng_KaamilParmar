@@ -113,7 +113,18 @@ public class PositionDao implements CrudDao<Position, String>{
      */
     @Override
     public void deleteById(String s) throws IllegalArgumentException {
+        if (s == null) {
+            throw new IllegalArgumentException("Id cannot be null");
+        }
 
+        try {
+            PreparedStatement ps = c.prepareStatement("DELETE FROM position WHERE ticker = ?");
+            ps.setString(1, s);
+            ps.executeUpdate();
+        }
+        catch (SQLException e) {
+            throw new RuntimeException("Error deleting entity: " + e.getMessage());
+        }
     }
 
     /**
@@ -121,13 +132,28 @@ public class PositionDao implements CrudDao<Position, String>{
      */
     @Override
     public void deleteAll() {
-
+        try {
+            PreparedStatement ps = c.prepareStatement("DELETE FROM position");
+            ps.executeUpdate();
+        }
+        catch (SQLException e) {
+            throw new RuntimeException("Error saving entity: " + e.getMessage());
+        }
     }
 
     //implement all inherited methods
     //you are not limited to methods defined in CrudDao
 
-    private Position mapPosition(ResultSet rs) {
-        return null;
+    private Position mapPosition(ResultSet rs) throws SQLException{
+        if (rs.next()) {
+            Position position = new Position();
+            position.setTicker(rs.getString("ticker"));
+            position.setNumOfShares(rs.getInt("number_of_shares"));
+            position.setValuePaid(rs.getDouble("value_paid"));
+
+            return position;
+        } else {
+            return null;
+        }
     }
 }
