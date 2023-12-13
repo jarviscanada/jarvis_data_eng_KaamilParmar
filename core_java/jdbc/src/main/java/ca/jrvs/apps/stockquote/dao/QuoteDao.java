@@ -73,9 +73,6 @@ public class QuoteDao implements CrudDao<Quote, String> {
             }
         }
 
-
-
-
     }
 
     /**
@@ -127,7 +124,7 @@ public class QuoteDao implements CrudDao<Quote, String> {
             throw new RuntimeException("Error saving entity: " + e.getMessage());
         }
 
-        return null;
+        return quotes;
     }
 
     /**
@@ -138,6 +135,10 @@ public class QuoteDao implements CrudDao<Quote, String> {
      */
     @Override
     public void deleteById(String s) throws IllegalArgumentException {
+        if (s == null) {
+            throw new IllegalArgumentException("Id cannot be null");
+        }
+
         try {
             PreparedStatement ps = c.prepareStatement("DELETE FROM quote WHERE symbol = ?");
             ps.setString(1, s);

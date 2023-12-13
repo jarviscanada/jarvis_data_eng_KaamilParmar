@@ -1,6 +1,11 @@
 package ca.jrvs.apps.stockquote.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class PositionDao implements CrudDao<Position, String>{
@@ -15,7 +20,37 @@ public class PositionDao implements CrudDao<Position, String>{
      */
     @Override
     public Position save(Position entity) throws IllegalArgumentException {
-        return null;
+        if (entity == null) {
+            throw new IllegalArgumentException("Id cannot be null");
+        }
+        else if(findById(entity.getTicker()).isEmpty()){
+            String sqlQuery = "INSERT INTO position (ticker, number_of_shares, value_paid) VALUES (?, ?, ?)";
+            try (PreparedStatement ps = c.prepareStatement(sqlQuery)) {
+                ps.setString(1, entity.getTicker());
+                ps.setInt(2, entity.getNumOfShares());
+                ps.setDouble(3, entity.getValuePaid());
+
+                ps.executeUpdate();
+
+                return entity;
+            } catch (SQLException e) {
+                throw new RuntimeException("Error saving entity: " + e.getMessage());
+            }
+        }
+        else {
+            String sqlQuery = "UPDATE position SET ticker = ?, number_of_shares = ?, value_paid = ? WHERE ticker = ?";
+            try (PreparedStatement ps = c.prepareStatement(sqlQuery)) {
+                ps.setString(1, entity.getTicker());
+                ps.setInt(2, entity.getNumOfShares());
+                ps.setDouble(3, entity.getValuePaid());
+
+                ps.executeUpdate();
+
+                return entity;
+            } catch (SQLException e) {
+                throw new RuntimeException("Error saving entity: " + e.getMessage());
+            }
+        }
     }
 
     /**
@@ -27,7 +62,23 @@ public class PositionDao implements CrudDao<Position, String>{
      */
     @Override
     public Optional<Position> findById(String s) throws IllegalArgumentException {
-        return Optional.empty();
+        if (s == null) {
+            throw new IllegalArgumentException("Id cannot be null");
+        }
+
+        String sqlQuery = "SELECT * FROM position WHERE ticker = ?";
+        try (PreparedStatement ps = c.prepareStatement(sqlQuery)) {
+            ps.setString(1, s);
+
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return Optional.of(mapPosition(rs));
+            } else {
+                return Optional.empty();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error saving entity: " + e.getMessage());
+        }
     }
 
     /**
@@ -37,8 +88,22 @@ public class PositionDao implements CrudDao<Position, String>{
      */
     @Override
     public Iterable<Position> findAll() {
-        return null;
+        List<Position> positions = new ArrayList<>();
+
+        String sqlQuery = "SELECT * FROM position";
+        try (PreparedStatement ps = c.prepareStatement(sqlQuery)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                positions.add(mapPosition(rs));
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error saving entity: " + e.getMessage());
+        }
+
+        return positions;
     }
+
 
     /**
      * Deletes the entity with the given id. If the entity is not found, it is silently ignored
@@ -61,4 +126,8 @@ public class PositionDao implements CrudDao<Position, String>{
 
     //implement all inherited methods
     //you are not limited to methods defined in CrudDao
+
+    private Position mapPosition(ResultSet rs) {
+        return null;
+    }
 }
