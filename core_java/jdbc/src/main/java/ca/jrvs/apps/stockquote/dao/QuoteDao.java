@@ -22,26 +22,54 @@ public class QuoteDao implements CrudDao<Quote, String> {
         if (entity == null) {
             throw new IllegalArgumentException("Id cannot be null");
         }
-        String sqlQuery = "INSERT INTO quote (symbol, open, high, low, price, volume, latest_trading_day, previous_close, change, change_percent, timestamp) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        try (PreparedStatement ps = c.prepareStatement(sqlQuery)) {
-            ps.setDouble(2, entity.getOpen());
-            ps.setDouble(3, entity.getHigh());
-            ps.setDouble(4, entity.getLow());
-            ps.setDouble(5, entity.getPrice());
-            ps.setInt(6, entity.getVolume());
-            ps.setDate(7, entity.getLatestTradingDay());
-            ps.setDouble(8, entity.getPreviousClose());
-            ps.setDouble(9, entity.getChange());
-            ps.setString(10, entity.getChangePercent());
-            ps.setTimestamp(11, entity.getTimestamp());
+        else if(findById(entity.getTicker()).isEmpty()){
+            String sqlQuery = "INSERT INTO quote (symbol, open, high, low, price, volume, latest_trading_day, previous_close, change, change_percent, timestamp) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            try (PreparedStatement ps = c.prepareStatement(sqlQuery)) {
+                ps.setString(1, entity.getTicker());
+                ps.setDouble(2, entity.getOpen());
+                ps.setDouble(3, entity.getHigh());
+                ps.setDouble(4, entity.getLow());
+                ps.setDouble(5, entity.getPrice());
+                ps.setInt(6, entity.getVolume());
+                ps.setDate(7, entity.getLatestTradingDay());
+                ps.setDouble(8, entity.getPreviousClose());
+                ps.setDouble(9, entity.getChange());
+                ps.setString(10, entity.getChangePercent());
+                ps.setTimestamp(11, entity.getTimestamp());
 
-            ps.executeUpdate();
+                ps.executeUpdate();
 
-            return entity;
-        } catch (SQLException e) {
-            throw new RuntimeException("Error saving entity: " + e.getMessage());
+                return entity;
+            } catch (SQLException e) {
+                throw new RuntimeException("Error saving entity: " + e.getMessage());
+            }
         }
+        else {
+            String sqlQuery = "UPDATE quote SET symbol = ?, open = ?, high = ?, low = ?, price = ?, volume = ?, " +
+                    "latest_trading_day = ?, previous_close = ?, change = ?, change_percent = ?, timestamp = ? WHERE symbol = ?";
+            try (PreparedStatement ps = c.prepareStatement(sqlQuery)) {
+                ps.setString(1, entity.getTicker());
+                ps.setDouble(2, entity.getOpen());
+                ps.setDouble(3, entity.getHigh());
+                ps.setDouble(4, entity.getLow());
+                ps.setDouble(5, entity.getPrice());
+                ps.setInt(6, entity.getVolume());
+                ps.setDate(7, entity.getLatestTradingDay());
+                ps.setDouble(8, entity.getPreviousClose());
+                ps.setDouble(9, entity.getChange());
+                ps.setString(10, entity.getChangePercent());
+                ps.setTimestamp(11, entity.getTimestamp());
+                ps.setString(12, entity.getTicker());
+
+                ps.executeUpdate();
+
+                return entity;
+            } catch (SQLException e) {
+                throw new RuntimeException("Error saving entity: " + e.getMessage());
+            }
+        }
+
 
 
 
