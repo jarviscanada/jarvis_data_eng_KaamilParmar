@@ -53,11 +53,23 @@ public class PositionService_UnitTest {
     }
 
     @Test
-    public void testSell() {
+    public void testSellValid() {
         String ticker = "AAPL";
 
         Position mockPosition = new Position();
 
+        assertNotNull(dao.findById(ticker));
+
+        positionService.sell(ticker);
+
+        assertNull(dao.findById(ticker));
+
+    }
+
+    public void testSellNotValid() {
+        String ticker = "AAPLeffeef";
+
+        Position mockPosition = new Position();
 
         positionService.sell(ticker);
 
