@@ -10,6 +10,11 @@ public class QuoteService {
     private QuoteDao dao;
     private QuoteHttpHelper httpHelper;
 
+
+    public QuoteService(){
+        dao = new QuoteDao();
+        httpHelper= new QuoteHttpHelper("");
+    }
     /**
      * Fetches latest quote data from endpoint
      * @param symbol
