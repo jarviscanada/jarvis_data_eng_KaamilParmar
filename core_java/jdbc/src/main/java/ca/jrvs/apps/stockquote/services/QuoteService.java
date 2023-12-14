@@ -11,9 +11,9 @@ public class QuoteService {
     private QuoteHttpHelper httpHelper;
 
 
-    public QuoteService(){
+    public QuoteService(String key){
         dao = new QuoteDao();
-        httpHelper= new QuoteHttpHelper("");
+        httpHelper= new QuoteHttpHelper(key);
     }
     /**
      * Fetches latest quote data from endpoint
