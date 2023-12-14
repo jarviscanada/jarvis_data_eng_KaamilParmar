@@ -9,30 +9,31 @@ import org.junit.Test;
 
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class QuoteService_UnitTest {
-    private QuoteDao mockDao;
-    private QuoteHttpHelper mockHttpHelper;
     private QuoteService quoteService;
 
     @Before
     public void setup() {
-        mockDao = mock(QuoteDao.class);
-        mockHttpHelper = mock(QuoteHttpHelper.class);
         quoteService = new QuoteService("");
     }
 
     @Test
-    public void testFetchQuoteDataFromAPI() {
-        String symbol = "MFST";
-        Quote mockQuote = new Quote();
-        when(mockHttpHelper.fetchQuoteInfo(symbol)).thenReturn(mockQuote);
+    public void testCorrectAPI() {
+        Optional<Quote> result = quoteService.fetchQuoteDataFromAPI("MFST");
 
-        Optional<Quote> result = quoteService.fetchQuoteDataFromAPI(symbol);
+        assertFalse(result.isEmpty());
 
-        assertEquals(mockQuote, result.get());
-        verify(mockHttpHelper).fetchQuoteInfo(symbol);
     }
+    @Test
+    public void testIncorrectAPI() {
+        Optional<Quote> result = quoteService.fetchQuoteDataFromAPI("mdek");
+
+        assertFalse(result.isPresent());
+
+    }
+
+
 }
