@@ -94,7 +94,7 @@ public class QuoteDao implements CrudDao<Quote, String> {
 
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                return Optional.of(mapQuote(rs));
+                return Optional.ofNullable(mapQuote(rs));
             } else {
                 return Optional.empty();
             }

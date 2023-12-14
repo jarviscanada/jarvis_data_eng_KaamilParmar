@@ -72,7 +72,7 @@ public class PositionDao implements CrudDao<Position, String>{
 
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                return Optional.of(mapPosition(rs));
+                return Optional.ofNullable(mapPosition(rs));
             } else {
                 return Optional.empty();
             }
