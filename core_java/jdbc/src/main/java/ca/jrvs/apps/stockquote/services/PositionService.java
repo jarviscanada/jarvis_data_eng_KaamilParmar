@@ -9,6 +9,10 @@ public class PositionService {
 
     private PositionDao dao;
 
+    public PositionService(){
+
+    }
+
     /**
      * Processes a buy order and updates the database accordingly
      * @param ticker
