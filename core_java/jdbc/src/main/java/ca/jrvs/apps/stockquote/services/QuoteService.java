@@ -12,11 +12,12 @@ public class QuoteService {
 
     /**
      * Fetches latest quote data from endpoint
-     * @param ticker
+     * @param symbol
      * @return Latest quote information or empty optional if ticker symbol not found
      */
-    public Optional<Quote> fetchQuoteDataFromAPI(String ticker) {
+    public Optional<Quote> fetchQuoteDataFromAPI(String symbol) {
         //TO DO
-        return null;
+        return Optional.ofNullable(httpHelper.fetchQuoteInfo(symbol));
+
     }
 }
