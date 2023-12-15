@@ -14,7 +14,7 @@ public class QuoteService {
 
     public QuoteService(QuoteDao qRepo, QuoteHttpHelper rcon) {
         dao = qRepo;
-        httpHelper= rcon;
+        httpHelper = rcon;
     }
 
     /**

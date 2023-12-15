@@ -5,13 +5,8 @@ import ca.jrvs.apps.stockquote.dao.PositionDao;
 import ca.jrvs.apps.stockquote.services.PositionService;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-
-import java.util.Optional;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
 
 public class PositionService_UnitTest {
     private PositionService positionService;
@@ -19,7 +14,7 @@ public class PositionService_UnitTest {
     @Before
     public void setup() {
         PositionDao dao = new PositionDao();
-        positionService = new PositionService();
+        positionService = new PositionService(pRepo);
     }
 
     @Test

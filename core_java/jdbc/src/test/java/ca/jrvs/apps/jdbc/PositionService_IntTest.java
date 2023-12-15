@@ -21,7 +21,7 @@ public class PositionService_IntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        positionService = new PositionService();
+        positionService = new PositionService(pRepo);
     }
 
     @Test

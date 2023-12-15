@@ -9,8 +9,8 @@ public class PositionService {
 
     private PositionDao dao;
 
-    public PositionService(){
-
+    public PositionService(PositionDao pRepo){
+        this.dao = pRepo;
     }
 
     /**

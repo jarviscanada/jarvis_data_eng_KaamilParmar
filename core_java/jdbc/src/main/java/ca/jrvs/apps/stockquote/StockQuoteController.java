@@ -20,7 +20,14 @@ import java.sql.SQLException;
 
 
 public class StockQuoteController {
-        public static void main(String[] args) {
+    private QuoteService sQuote;
+    private PositionService sPos;
+    public StockQuoteController(QuoteService sQuote, PositionService sPos) {
+        this.sQuote = sQuote;
+        this.sPos = sPos;
+    }
+
+    public static void main(String[] args) {
             Map<String, String> properties = new HashMap<>();
             try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/properties.txt"))) {
                 String line;
