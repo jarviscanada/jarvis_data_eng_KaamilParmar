@@ -81,7 +81,8 @@ public class PositionDao implements CrudDao<Position, String>{
                 return Optional.empty();
             }
         } catch (SQLException e) {
-            throw new RuntimeException("Error saving entity: " + e.getMessage());
+//            throw new RuntimeException("Error saving entity: " + e.getMessage());
+            return Optional.empty();
         }
     }
 

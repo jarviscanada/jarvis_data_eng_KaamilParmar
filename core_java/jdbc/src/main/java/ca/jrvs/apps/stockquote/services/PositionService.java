@@ -38,7 +38,7 @@ public class PositionService {
     public void sell(String ticker) {
         //TO DO
         Optional<Position> posOp = dao.findById(ticker);
-        if(posOp.isEmpty()) return;
+        if(posOp.isEmpty()){ System.out.println("You do not have this stock."); return;}
 
         Position pos = posOp.get();
 

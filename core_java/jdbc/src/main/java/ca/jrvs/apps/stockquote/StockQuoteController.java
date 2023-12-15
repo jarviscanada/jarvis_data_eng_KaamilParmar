@@ -88,12 +88,12 @@ public class StockQuoteController {
             } else if (operation.equals("deleteall")) {
 //                sQuote.deleteAll(ticker);
             } else if (operation.equals("buy")) {
-                if (args.length < 5) {
+                if (args.length < 4) {
                     System.out.println("Insufficient arguments provided for buying.");
                     continue;
                 }
-                int numOfShares = Integer.parseInt(args[3]);
-                double price = Double.parseDouble(args[4]);
+                int numOfShares = Integer.parseInt(args[2]);
+                double price = Double.parseDouble(args[3]);
                 sPos.buy(ticker, numOfShares, price);
             } else if (operation.equals("sell")) {
                 if (args.length < 2) {
