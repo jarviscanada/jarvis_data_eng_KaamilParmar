@@ -67,7 +67,7 @@ public class StockQuoteController {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.print("Enter a command (or 'end' to exit): ");
+            System.out.print("Enter a ticker followed by a command (or simply 'end' to exit): ");
             String command = scanner.nextLine();
 
             if (command.equalsIgnoreCase("end")) {
@@ -80,16 +80,18 @@ public class StockQuoteController {
                 continue;
             }
 
+            String ticker = args[0];
             String operation = args[1].toLowerCase();
 
-            if (operation.equals("save") || operation.equals("find") || operation.equals("deleteall")) {
-                sQuote.fetchQuoteDataFromAPI(args[0]);
+            if (operation.equals("save") || operation.equals("find")) {
+                sQuote.fetchQuoteDataFromAPI(ticker);
+            } else if (operation.equals("deleteall")) {
+                sQuote.deleteAll(ticker);
             } else if (operation.equals("buy")) {
                 if (args.length < 5) {
                     System.out.println("Insufficient arguments provided for buying.");
                     continue;
                 }
-                String ticker = args[0];
                 int numOfShares = Integer.parseInt(args[3]);
                 double price = Double.parseDouble(args[4]);
                 sPos.buy(ticker, numOfShares, price);
@@ -98,8 +100,9 @@ public class StockQuoteController {
                     System.out.println("Insufficient arguments provided for selling.");
                     continue;
                 }
-
-                sPos.sell(args[0]);
+                sPos.sell(ticker);
+            } else if (operation.equals("findall")) {
+                sQuote.findAll(ticker);
             } else {
                 System.out.println("Invalid command: " + operation + ". Please try again.");
             }
@@ -107,4 +110,5 @@ public class StockQuoteController {
 
         scanner.close();
     }
+
 }
