@@ -86,7 +86,7 @@ public class StockQuoteController {
             if (operation.equals("save") || operation.equals("find")) {
                 sQuote.fetchQuoteDataFromAPI(ticker);
             } else if (operation.equals("deleteall")) {
-                sQuote.deleteAll(ticker);
+//                sQuote.deleteAll(ticker);
             } else if (operation.equals("buy")) {
                 if (args.length < 5) {
                     System.out.println("Insufficient arguments provided for buying.");
@@ -102,7 +102,7 @@ public class StockQuoteController {
                 }
                 sPos.sell(ticker);
             } else if (operation.equals("findall")) {
-                sQuote.findAll(ticker);
+//                sQuote.findAll(ticker);
             } else {
                 System.out.println("Invalid command: " + operation + ". Please try again.");
             }
