@@ -11,10 +11,12 @@ public class QuoteService {
     private QuoteHttpHelper httpHelper;
 
 
-    public QuoteService(String key){
-        dao = new QuoteDao();
-        httpHelper= new QuoteHttpHelper(key);
+
+    public QuoteService(QuoteDao qRepo, QuoteHttpHelper rcon) {
+        dao = qRepo;
+        httpHelper= rcon;
     }
+
     /**
      * Fetches latest quote data from endpoint
      * @param symbol

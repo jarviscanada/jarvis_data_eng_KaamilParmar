@@ -16,16 +16,17 @@ public class QuoteHttpHelper {
     private String apiKey;
     private OkHttpClient client;
 
-    public QuoteHttpHelper(String apiKey) {
+    public QuoteHttpHelper(String apiKey, OkHttpClient client) {
         this.apiKey = apiKey;
+        this.client = client;
     }
 
 
     //main for testing purposes
-    public static void main(String[] args) {
-        QuoteHttpHelper helper = new QuoteHttpHelper("");
-        helper.fetchQuoteInfo("MSFT");
-    }
+//    public static void main(String[] args) {
+//        QuoteHttpHelper helper = new QuoteHttpHelper("", client);
+//        helper.fetchQuoteInfo("MSFT");
+//    }
 
     /**
      * Fetch latest quote data from Alpha Vantage endpoint

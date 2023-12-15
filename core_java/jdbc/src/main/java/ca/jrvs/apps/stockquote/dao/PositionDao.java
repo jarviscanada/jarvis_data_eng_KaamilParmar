@@ -11,6 +11,10 @@ import java.util.Optional;
 public class PositionDao implements CrudDao<Position, String>{
     private Connection c;
 
+    public PositionDao(Connection c) {
+        this.c = c;
+    }
+
     /**
      * Saves a given entity. Used for create and update
      *

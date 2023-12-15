@@ -12,6 +12,10 @@ public class QuoteDao implements CrudDao<Quote, String> {
 
     private Connection c;
 
+    public QuoteDao(Connection c) {
+        this.c = c;
+    }
+
     /**
      * Saves a given entity. Used for create and update
      *
