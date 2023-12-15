@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import java.sql.SQLException;
+import java.util.Scanner;
 
 
 public class StockQuoteController {
@@ -62,6 +63,48 @@ public class StockQuoteController {
             }
         }
 
-    private void initClient() {
+    public void initClient() throws SQLException {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.print("Enter a command (or 'end' to exit): ");
+            String command = scanner.nextLine();
+
+            if (command.equalsIgnoreCase("end")) {
+                break;
+            }
+
+            String[] args = command.split(" ");
+            if (args.length < 2) {
+                System.out.println("Invalid command. Please try again.");
+                continue;
+            }
+
+            String operation = args[1].toLowerCase();
+
+            if (operation.equals("save") || operation.equals("find") || operation.equals("deleteall")) {
+                sQuote.fetchQuoteDataFromAPI(args[0]);
+            } else if (operation.equals("buy")) {
+                if (args.length < 5) {
+                    System.out.println("Insufficient arguments provided for buying.");
+                    continue;
+                }
+                String ticker = args[0];
+                int numOfShares = Integer.parseInt(args[3]);
+                double price = Double.parseDouble(args[4]);
+                sPos.buy(ticker, numOfShares, price);
+            } else if (operation.equals("sell")) {
+                if (args.length < 2) {
+                    System.out.println("Insufficient arguments provided for selling.");
+                    continue;
+                }
+
+                sPos.sell(args[0]);
+            } else {
+                System.out.println("Invalid command: " + operation + ". Please try again.");
+            }
+        }
+
+        scanner.close();
     }
 }
