@@ -1,22 +1,26 @@
 package ca.jrvs.apps.stockquote;
 
 import ca.jrvs.apps.stockquote.dao.PositionDao;
+import ca.jrvs.apps.stockquote.dao.Quote;
 import ca.jrvs.apps.stockquote.dao.QuoteDao;
 import ca.jrvs.apps.stockquote.dao.QuoteHttpHelper;
 import ca.jrvs.apps.stockquote.services.PositionService;
 import ca.jrvs.apps.stockquote.services.QuoteService;
 import okhttp3.OkHttpClient;
+import org.postgresql.util.PSQLException;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.ConnectException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.HashMap;
 import java.util.Map;
 
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.Scanner;
 
 
@@ -83,10 +87,24 @@ public class StockQuoteController {
             String ticker = args[0];
             String operation = args[1].toLowerCase();
 
-            if (operation.equals("save") || operation.equals("find")) {
-                sQuote.fetchQuoteDataFromAPI(ticker);
+            if (operation.equals("save")) {
+                Optional<Quote> quoteOptional = sQuote.fetchQuoteDataFromAPI(ticker);
+
+                if (quoteOptional.isPresent()) {
+                    // Quote object is not empty, handle the data
+                    sQuote.save(quoteOptional.get());
+                } else {
+                    // Quote object is empty, let client know
+                    System.out.println("Quote could not be saved");
+                };
+
+            } else if (operation.equals("find")) {
+                // Use DAO functions for finding
+                sQuote.find(ticker);
+            } else if (operation.equals("delete")) {
+                sQuote.delete(ticker);
             } else if (operation.equals("deleteall")) {
-//                sQuote.deleteAll(ticker);
+                sQuote.deleteAll();
             } else if (operation.equals("buy")) {
                 if (args.length < 4) {
                     System.out.println("Insufficient arguments provided for buying.");
@@ -102,8 +120,8 @@ public class StockQuoteController {
                 }
                 sPos.sell(ticker);
             } else if (operation.equals("findall")) {
-//                sQuote.findAll(ticker);
-            } else {
+                sQuote.findAll();
+            }else {
                 System.out.println("Invalid command: " + operation + ". Please try again.");
             }
         }

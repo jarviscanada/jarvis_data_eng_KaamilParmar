@@ -1,5 +1,6 @@
 package ca.jrvs.apps.stockquote.services;
 
+import ca.jrvs.apps.stockquote.dao.Position;
 import ca.jrvs.apps.stockquote.dao.Quote;
 import ca.jrvs.apps.stockquote.dao.QuoteDao;
 import ca.jrvs.apps.stockquote.dao.QuoteHttpHelper;
@@ -26,5 +27,30 @@ public class QuoteService {
         //TO DO
         return Optional.ofNullable(httpHelper.fetchQuoteInfo(symbol));
 
+    }
+
+    public void save(Quote quote) {
+        //TO DO
+        dao.save(quote);
+    }
+
+    public void find(String symbol) {
+        //TO DO
+        dao.findById(symbol);
+    }
+
+    public void delete(String symbol) {
+        //TO DO
+        dao.deleteById(symbol);
+    }
+
+    public void findAll() {
+        //TO DO
+        dao.findAll();
+    }
+
+    public void deleteAll() {
+        //TO DO
+        dao.deleteAll();
     }
 }

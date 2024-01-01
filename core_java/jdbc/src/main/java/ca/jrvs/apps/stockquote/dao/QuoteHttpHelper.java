@@ -11,6 +11,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.sql.Timestamp;
 
 public class QuoteHttpHelper {
     private String apiKey;
@@ -52,6 +53,9 @@ public class QuoteHttpHelper {
             JsonNode jsonNode = om.readTree(response.body());
 
             quote = om.treeToValue(jsonNode.get("Global Quote"), Quote.class);
+            Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
+
+            quote.setTimestamp(currentTimestamp);
 
             System.out.println(response.body()+"\n e"+ quote.getSymbol());
         } catch (InterruptedException e) {
