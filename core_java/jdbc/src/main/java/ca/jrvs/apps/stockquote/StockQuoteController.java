@@ -1,13 +1,12 @@
 package ca.jrvs.apps.stockquote;
 
-import ca.jrvs.apps.stockquote.dao.PositionDao;
-import ca.jrvs.apps.stockquote.dao.Quote;
-import ca.jrvs.apps.stockquote.dao.QuoteDao;
-import ca.jrvs.apps.stockquote.dao.QuoteHttpHelper;
+import ca.jrvs.apps.stockquote.dao.*;
 import ca.jrvs.apps.stockquote.services.PositionService;
 import ca.jrvs.apps.stockquote.services.QuoteService;
 import okhttp3.OkHttpClient;
 import org.postgresql.util.PSQLException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -25,6 +24,8 @@ import java.util.Scanner;
 
 
 public class StockQuoteController {
+
+    static final Logger logger = LoggerFactory.getLogger(StockQuoteController.class);
     private QuoteService sQuote;
     private PositionService sPos;
     public StockQuoteController(QuoteService sQuote, PositionService sPos) {
@@ -41,16 +42,16 @@ public class StockQuoteController {
                     properties.put(tokens[0], tokens[1]);
                 }
             } catch (FileNotFoundException e) {
-                e.printStackTrace();
+                logger.error("Could not find properties file.");
             } catch (IOException e) {
-                e.printStackTrace();
+                logger.error("Something went wrong accessing the properites file");
                 throw new RuntimeException(e);
             }
 
             try {
                 Class.forName(properties.get("db-class"));
             } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+                logger.error("Could not find database");
             }
             OkHttpClient client = new OkHttpClient();
             String url = "jdbc:postgresql://"+properties.get("server")+":"+properties.get("port")+"/"+properties.get("database");
@@ -63,7 +64,7 @@ public class StockQuoteController {
                 StockQuoteController con = new StockQuoteController(sQuote, sPos);
                 con.initClient();
             } catch (SQLException e) {
-                e.printStackTrace();
+                logger.error("SQLException, could not establish connection.");
             }
         }
 
@@ -114,7 +115,7 @@ public class StockQuoteController {
                 double price = Double.parseDouble(args[3]);
                 sPos.buy(ticker, numOfShares, price);
             } else if (operation.equals("sell")) {
-                if (args.length < 2) {
+                if (args.length < 3) {
                     System.out.println("Insufficient arguments provided for selling.");
                     continue;
                 }

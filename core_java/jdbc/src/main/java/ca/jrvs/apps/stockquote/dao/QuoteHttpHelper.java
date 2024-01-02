@@ -67,9 +67,9 @@ public class QuoteHttpHelper {
         } catch (JsonMappingException e) {
             logger.error("Could not parse data into JSON.");
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
+            logger.error("Could not process data into JSON.");
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Could not parse data properly. IOException");
         }
 
 
