@@ -6,9 +6,9 @@ I am a Computer Science graduate from York University with a passion for coding,
 
 **Proficient:** Java, Linux/Bash, RDBMS/SQL, Agile/Scrum, Git, Javascript/Typescript, React, Node, Express, HTML/CSS, Python
 
-**Competent:** Scala, MongoDB, C/C++, Springboot, Docker, Github Actions, Mocha, JUnit, Swing, Atom
+**Competent:** MongoDB, C/C++, Springboot, Docker, Github Actions, Mocha, JUnit, Swing
 
-**Familiar:** C#, Hadoop, Objective-C, Swift, pandas, pygame
+**Familiar:** C#, Objective-C, Swift, pandas, pygame
 
 ## Jarvis Projects
 
@@ -18,6 +18,10 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_KaamilParm
 **Cluster Monitor** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_KaamilParmar/tree/masterhttps://github.com/jarviscanada/jarvis_data_eng_KaamilParmar/tree/main/linux_sql)]: Implemented a Bash-based monitoring agent to consistently track and store hardware specs and usage data of host machines. Deployed the application on Docker, syncing data with a PostgreSQL database. Conducted operations on a CentOS virtual machine hosted on Google Cloud Platform. Automated data collection using crontab for regular updates. Tested the system functionality through command-line interface (CLI) for robust performance.
 
 **SQL Queries** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_KaamilParmar/tree/masterhttps://github.com/jarviscanada/jarvis_data_eng_KaamilParmar/tree/main/SQL)]: Implemented and executed SQL queries on PostgreSQL tables within a Docker container. Utilized DBeaver for query execution, focusing on exercises from pgexercise. Demonstrated proficiency in CRUD operations, Joins, Aggregate Functions, and advanced SQL techniques. Emphasized database setup and schema understanding for effective query execution.
+
+**Java Grep App** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_KaamilParmar/tree/master/core_java)]: Developed a counterpart to the grep Linux command line utility using Java, incorporating Lambda and Stream APIs in the implementation. Employed Maven for packaging the application and subsequently deployed it on Docker Hub through Docker
+
+**Java Stock Quote APP (JDBC)** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_KaamilParmar/tree/master/core_java)]: Created a tool that simulates real-time buying and selling of stock positions in Java. It utilizes a third-party API (Vantage) to collect real-time stock market data in JSON format and then converts JSON data into Java objects and parses them into a PostgreSQL server. The application relies on OkHttp for making HTTP requests to VantageAPI and Jackson library for processing JSON data. All requests are stored in a PostgreSQL database, which is running in a Docker container. To ensure the accuracy of the program, the application includes a comprehensive amount of unit and integration tests. This was accomplished using tools and libraries such as JUnit, Mockito, and log4j Logger. The app is controlled and utilized by the user through the console.
 
 
 ## Highlighted Projects
@@ -35,7 +39,7 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_KaamilParm
 
 ## Education
 **York University (2018-2023)**, Honours Bachelor of Science, Computer Science
--    
+- CodeFI Club Hackathon Participant
 
 
 ## Miscellaneous

@@ -128,6 +128,8 @@ education:
     degree: "Honours Bachelor of Science"
     department: "Computer Science"
     # optional
+    awards_achievements:
+      - "CodeFI Club Hackathon Participant"
 #  - school_name: "XYZ university"
 #    duration: "2016-2018"
 #    degree: "Master of Engineering"
