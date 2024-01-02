@@ -24,7 +24,6 @@ skills:
   
   # At least 5 skills
   competent:
-    - Scala
     - MongoDB
     - C/C++
     - Springboot
@@ -33,11 +32,10 @@ skills:
     - Mocha
     - JUnit
     - Swing
-    - Atom
+
   # At least 5 skills
   familiar:
     - C#
-    - Hadoop
     - Objective-C
     - Swift
     - pandas
@@ -57,12 +55,28 @@ jarvis_projects:
     # The project description must start with an action verb (https://bit.ly/3guO98u)
     description: Implemented and executed SQL queries on PostgreSQL tables within a Docker container. Utilized DBeaver for query execution, focusing on exercises from pgexercise. Demonstrated proficiency in CRUD operations, Joins, Aggregate Functions, and advanced SQL techniques. Emphasized database setup and schema understanding for effective query execution.
   #
-  - name: "Core Java Apps"
+#  - name: "Core Java Apps"
+#    git_url: "/core_java"
+#    description:
+#      - GREP APP: Developed a counterpart to the grep Linux command line utility using Java, incorporating Lambda and Stream APIs in the implementation. Employed Maven for packaging the application and subsequently deployed it on Docker Hub through Docker
+#      - ""
+#      - ""
+#
+#  - name: "Core Java Apps"
+#    git_url: "/core_java"
+#    description:
+#      - GREP APP: Developed a counterpart to the grep Linux command line utility using Java, incorporating Lambda and Stream APIs in the implementation. Employed Maven for packaging the application and subsequently deployed it on Docker Hub through Docker
+#      - ""
+#      - ""
+
+  - name: "Java Grep App"
     git_url: "/core_java"
-    description:
-      - GREP APP: Developed a counterpart to the grep Linux command line utility using Java, incorporating Lambda and Stream APIs in the implementation. Employed Maven for packaging the application and subsequently deployed it on Docker Hub through Docker
-      - ""
-      - ""
+    description: Developed a counterpart to the grep Linux command line utility using Java, incorporating Lambda and Stream APIs in the implementation. Employed Maven for packaging the application and subsequently deployed it on Docker Hub through Docker
+
+  - name: "Java Stock Quote APP (JDBC)"
+    git_url: "/core_java"
+    description: Created a tool that simulates real-time buying and selling of stock positions in Java. It utilizes a third-party API (Vantage) to collect real-time stock market data in JSON format and then converts JSON data into Java objects and parses them into a PostgreSQL server. The application relies on OkHttp for making HTTP requests to VantageAPI and Jackson library for processing JSON data. All requests are stored in a PostgreSQL database, which is running in a Docker container. To ensure the accuracy of the program, the application includes a comprehensive amount of unit and integration tests. This was accomplished using tools and libraries such as JUnit, Mockito, and log4j Logger. The app is controlled and utilized by the user through the console.
+
 #  - name: "Springboot App"
 #    git_url: "/springboot"
 #    description: ""
@@ -114,8 +128,6 @@ education:
     degree: "Honours Bachelor of Science"
     department: "Computer Science"
     # optional
-    awards_achievements:
-      - "   "
 #  - school_name: "XYZ university"
 #    duration: "2016-2018"
 #    degree: "Master of Engineering"
