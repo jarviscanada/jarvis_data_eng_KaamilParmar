@@ -104,11 +104,13 @@ public class StockQuoteController {
 
             } else if (operation.equals("find")) {
                 // Use DAO functions for finding
-                sQuote.find(ticker);
+                Optional<Quote> quote = sQuote.find(ticker);
+                if(quote.isPresent()) System.out.println(" "+quote.get());
+                else System.out.println("No quote exists for this. Try saving it first.");
+
             } else if (operation.equals("delete")) {
                 sQuote.delete(ticker);
-            } else if (operation.equals("deleteall")) {
-                sQuote.deleteAll();
+                System.out.println("Quote was deleted if it exists.");
             } else if (operation.equals("buy")) {
                 if (args.length < 4) {
                     System.out.println("Insufficient arguments provided for buying.");

@@ -34,9 +34,9 @@ public class QuoteService {
         dao.save(quote);
     }
 
-    public void find(String symbol) {
+    public Optional<Quote> find(String symbol) {
         //TO DO
-        dao.findById(symbol);
+        return dao.findById(symbol);
     }
 
     public void delete(String symbol) {
