@@ -31,7 +31,7 @@ public class QuoteDao implements CrudDao<Quote, String> {
 
         if (entity == null) {
             logger.error("Quote does not exist");
-            throw new IllegalArgumentException("Quote does not exist");
+//            throw new IllegalArgumentException("Quote does not exist");
         }
         else if(findById(entity.getSymbol()).isEmpty()){
             String sqlQuery = "INSERT INTO quote (symbol, open, high, low, price, volume, latest_trading_day, previous_close, change, change_percent, timestamp) " +
@@ -54,7 +54,7 @@ public class QuoteDao implements CrudDao<Quote, String> {
                 return entity;
             } catch (SQLException e) {
                 logger.error("SQLException Occurred. Could not save quote. Reason:" +e.getMessage());
-                throw new RuntimeException();
+//                throw new RuntimeException();
             }
         }
         else {
@@ -79,10 +79,10 @@ public class QuoteDao implements CrudDao<Quote, String> {
                 return entity;
             } catch (SQLException e) {
                 logger.error("SQLException Occurred. Could not save quote. Reason:" +e.getMessage());
-                throw new RuntimeException();
+//                throw new RuntimeException();
             }
         }
-
+        return entity;
     }
 
     /**
@@ -96,7 +96,7 @@ public class QuoteDao implements CrudDao<Quote, String> {
     public Optional<Quote> findById(String s) throws IllegalArgumentException {
         if (s == null) {
             logger.error("Ticker is null/missing");
-            throw new IllegalArgumentException();
+
         }
 
         String sqlQuery = "SELECT * FROM quote WHERE symbol = ?";
@@ -111,7 +111,8 @@ public class QuoteDao implements CrudDao<Quote, String> {
             }
         } catch (SQLException e) {
             logger.error("SQLException Occurred. Could not find quote. Reason:" +e.getMessage());
-            throw new RuntimeException();
+            return Optional.empty();
+//            throw new RuntimeException();
         }
 
     }
@@ -134,7 +135,7 @@ public class QuoteDao implements CrudDao<Quote, String> {
 
         } catch (SQLException e) {
             logger.error("SQLException Occurred. Could not find quote. Reason:" +e.getMessage());
-            throw new RuntimeException();
+
         }
 
         return quotes;
@@ -150,7 +151,7 @@ public class QuoteDao implements CrudDao<Quote, String> {
     public void deleteById(String s) throws IllegalArgumentException {
         if (s == null) {
             logger.error("Id is null/missing");
-            throw new IllegalArgumentException();
+
         }
 
         try {
@@ -160,7 +161,7 @@ public class QuoteDao implements CrudDao<Quote, String> {
         }
         catch (SQLException e) {
             logger.error("SQLException Occurred. Could not delete quote. Reason:" +e.getMessage());
-            throw new RuntimeException();
+//            throw new RuntimeException();
         }
     }
 
@@ -175,7 +176,7 @@ public class QuoteDao implements CrudDao<Quote, String> {
         }
         catch (SQLException e) {
             logger.error("SQLException Occurred. Could not delete all quotes. Reason:" +e.getMessage());
-            throw new RuntimeException();
+
         }
     }
 

@@ -35,7 +35,7 @@ public class PositionDao implements CrudDao<Position, String>{
     public Position save(Position entity) throws IllegalArgumentException {
         if (entity == null) {
             logger.error("Position does not exist");
-            throw new IllegalArgumentException("Position does not exist");
+//            throw new IllegalArgumentException("Position does not exist");
         }
         else if(findById(entity.getTicker()).isEmpty()){
             String sqlQuery = "INSERT INTO position (ticker, number_of_shares, value_paid) VALUES (?, ?, ?)";
@@ -49,7 +49,8 @@ public class PositionDao implements CrudDao<Position, String>{
                 return entity;
             } catch (SQLException e) {
                 logger.error("SQLException Occurred. Could not save position. Reason:" +e.getMessage());
-                throw new RuntimeException();            }
+//                throw new RuntimeException();
+            }
         }
         else {
             String sqlQuery = "UPDATE position SET ticker = ?, number_of_shares = ?, value_paid = ? WHERE ticker = ?";
@@ -63,9 +64,11 @@ public class PositionDao implements CrudDao<Position, String>{
                 return entity;
             } catch (SQLException e) {
                 logger.error("SQLException Occurred. Could not save position. Reason:" +e.getMessage());
-                throw new RuntimeException();
+//                throw new RuntimeException();
             }
+
         }
+        return entity;
     }
 
     /**
@@ -79,7 +82,7 @@ public class PositionDao implements CrudDao<Position, String>{
     public Optional<Position> findById(String s) throws IllegalArgumentException {
         if (s == null) {
             logger.error("Ticker is null/missing");
-            throw new IllegalArgumentException("Id cannot be null");
+//            throw new IllegalArgumentException("Id cannot be null");
         }
 
         String sqlQuery = "SELECT * FROM position WHERE ticker = ?";
@@ -117,7 +120,7 @@ public class PositionDao implements CrudDao<Position, String>{
 
         } catch (SQLException e) {
             logger.error("SQLException Occurred. Could not find all positions. Reason:" +e.getMessage());
-            throw new RuntimeException();
+//            throw new RuntimeException();
         }
 
         return positions;
@@ -134,7 +137,6 @@ public class PositionDao implements CrudDao<Position, String>{
     public void deleteById(String s) throws IllegalArgumentException {
         if (s == null) {
             logger.error("Ticker is null/missing");
-            throw new IllegalArgumentException("Id cannot be null");
         }
 
         try {
@@ -144,7 +146,7 @@ public class PositionDao implements CrudDao<Position, String>{
         }
         catch (SQLException e) {
             logger.error("SQLException Occurred. Could not delete position. Reason:" +e.getMessage());
-            throw new RuntimeException();
+//            throw new RuntimeException();
         }
     }
 
@@ -159,7 +161,7 @@ public class PositionDao implements CrudDao<Position, String>{
         }
         catch (SQLException e) {
             logger.error("SQLException Occurred. Could not delete all positions. Reason:" +e.getMessage());
-            throw new RuntimeException();
+//            throw new RuntimeException();
         }
     }
 

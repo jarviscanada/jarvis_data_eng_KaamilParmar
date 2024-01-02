@@ -4,6 +4,7 @@ import ca.jrvs.apps.stockquote.dao.*;
 import ca.jrvs.apps.stockquote.services.PositionService;
 import ca.jrvs.apps.stockquote.services.QuoteService;
 import okhttp3.OkHttpClient;
+import org.apache.log4j.BasicConfigurator;
 import org.postgresql.util.PSQLException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,6 +36,8 @@ public class StockQuoteController {
 
     public static void main(String[] args) {
             Map<String, String> properties = new HashMap<>();
+
+            BasicConfigurator.configure();
             try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/properties.txt"))) {
                 String line;
                 while ((line = br.readLine()) != null) {
