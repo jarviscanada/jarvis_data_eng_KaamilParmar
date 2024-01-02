@@ -51,7 +51,7 @@ public class QuoteHttpHelper {
         try {
             HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
 
-            System.out.println(response.body());
+            logger.info("Response received from Vantage API.");
             ObjectMapper om = new ObjectMapper();
 
             JsonNode jsonNode = om.readTree(response.body());
@@ -61,11 +61,11 @@ public class QuoteHttpHelper {
 
             quote.setTimestamp(currentTimestamp);
 
-            System.out.println(response.body()+"\n e"+ quote.getSymbol());
+
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            logger.error("Could not receive response properly from Vantage API.");
         } catch (JsonMappingException e) {
-            e.printStackTrace();
+            logger.error("Could not parse data into JSON.");
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         } catch (IOException e) {
