@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.OkHttpClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.URI;
@@ -14,6 +16,8 @@ import java.net.http.HttpResponse;
 import java.sql.Timestamp;
 
 public class QuoteHttpHelper {
+    final Logger logger = LoggerFactory.getLogger(QuoteHttpHelper.class);
+
     private String apiKey;
     private OkHttpClient client;
 

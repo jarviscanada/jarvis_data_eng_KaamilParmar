@@ -8,8 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class QuoteDao implements CrudDao<Quote, String> {
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+public class QuoteDao implements CrudDao<Quote, String> {
+    final Logger logger = LoggerFactory.getLogger(CrudDao.class);
     private Connection c;
 
     public QuoteDao(Connection c) {
@@ -27,7 +30,8 @@ public class QuoteDao implements CrudDao<Quote, String> {
     public Quote save(Quote entity) throws IllegalArgumentException {
 
         if (entity == null) {
-            throw new IllegalArgumentException("Id cannot be null");
+            logger.error("Quote does not exist");
+            throw new IllegalArgumentException("Quote does not exist");
         }
         else if(findById(entity.getSymbol()).isEmpty()){
             String sqlQuery = "INSERT INTO quote (symbol, open, high, low, price, volume, latest_trading_day, previous_close, change, change_percent, timestamp) " +
@@ -49,7 +53,8 @@ public class QuoteDao implements CrudDao<Quote, String> {
 
                 return entity;
             } catch (SQLException e) {
-                throw new RuntimeException("Error saving entity: " + e.getMessage());
+                logger.error("SQLException Occurred. Could not save quote. Reason:" +e.getMessage());
+                throw new RuntimeException();
             }
         }
         else {
@@ -73,7 +78,8 @@ public class QuoteDao implements CrudDao<Quote, String> {
 
                 return entity;
             } catch (SQLException e) {
-                throw new RuntimeException("Error saving entity: " + e.getMessage());
+                logger.error("SQLException Occurred. Could not save quote. Reason:" +e.getMessage());
+                throw new RuntimeException();
             }
         }
 
@@ -89,7 +95,8 @@ public class QuoteDao implements CrudDao<Quote, String> {
     @Override
     public Optional<Quote> findById(String s) throws IllegalArgumentException {
         if (s == null) {
-            throw new IllegalArgumentException("Id cannot be null");
+            logger.error("Ticker is null/missing");
+            throw new IllegalArgumentException();
         }
 
         String sqlQuery = "SELECT * FROM quote WHERE symbol = ?";
@@ -103,7 +110,8 @@ public class QuoteDao implements CrudDao<Quote, String> {
                 return Optional.empty();
             }
         } catch (SQLException e) {
-            throw new RuntimeException("Error saving entity: " + e.getMessage());
+            logger.error("SQLException Occurred. Could not find quote. Reason:" +e.getMessage());
+            throw new RuntimeException();
         }
 
     }
@@ -125,7 +133,8 @@ public class QuoteDao implements CrudDao<Quote, String> {
             }
 
         } catch (SQLException e) {
-            throw new RuntimeException("Error saving entity: " + e.getMessage());
+            logger.error("SQLException Occurred. Could not find quote. Reason:" +e.getMessage());
+            throw new RuntimeException();
         }
 
         return quotes;
@@ -140,7 +149,8 @@ public class QuoteDao implements CrudDao<Quote, String> {
     @Override
     public void deleteById(String s) throws IllegalArgumentException {
         if (s == null) {
-            throw new IllegalArgumentException("Id cannot be null");
+            logger.error("Id is null/missing");
+            throw new IllegalArgumentException();
         }
 
         try {
@@ -149,7 +159,8 @@ public class QuoteDao implements CrudDao<Quote, String> {
             ps.executeUpdate();
         }
         catch (SQLException e) {
-            throw new RuntimeException("Error deleting entity: " + e.getMessage());
+            logger.error("SQLException Occurred. Could not delete quote. Reason:" +e.getMessage());
+            throw new RuntimeException();
         }
     }
 
@@ -163,7 +174,8 @@ public class QuoteDao implements CrudDao<Quote, String> {
             ps.executeUpdate();
         }
         catch (SQLException e) {
-            throw new RuntimeException("Error saving entity: " + e.getMessage());
+            logger.error("SQLException Occurred. Could not delete all quotes. Reason:" +e.getMessage());
+            throw new RuntimeException();
         }
     }
 
