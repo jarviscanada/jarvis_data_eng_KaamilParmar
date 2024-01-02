@@ -104,7 +104,9 @@ public class QuoteDao implements CrudDao<Quote, String> {
             ps.setString(1, s);
 
             ResultSet rs = ps.executeQuery();
+
             if (rs.next()) {
+                logger.info("rs"+rs.getString("symbol"));
                 return Optional.ofNullable(mapQuote(rs));
             } else {
                 return Optional.empty();
@@ -184,7 +186,7 @@ public class QuoteDao implements CrudDao<Quote, String> {
     //you are not limited to methods defined in CrudDao
 
     private Quote mapQuote(ResultSet rs) throws SQLException {
-        if (rs.next()) {
+
             Quote quote = new Quote();
             quote.setSymbol(rs.getString("symbol"));
             quote.setOpen(rs.getDouble("open"));
@@ -197,9 +199,8 @@ public class QuoteDao implements CrudDao<Quote, String> {
             quote.setChange(rs.getDouble("change"));
             quote.setChangePercent(rs.getString("change_percent"));
 
+            logger.info("nek"+quote.getSymbol());
             return quote;
-        } else {
-            return null;
-        }
+
     }
 }

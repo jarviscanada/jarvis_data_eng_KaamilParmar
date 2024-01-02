@@ -169,15 +169,13 @@ public class PositionDao implements CrudDao<Position, String>{
     //you are not limited to methods defined in CrudDao
 
     private Position mapPosition(ResultSet rs) throws SQLException{
-        if (rs.next()) {
+
             Position position = new Position();
             position.setTicker(rs.getString("ticker"));
             position.setNumOfShares(rs.getInt("number_of_shares"));
             position.setValuePaid(rs.getDouble("value_paid"));
 
             return position;
-        } else {
-            return null;
-        }
+
     }
 }
