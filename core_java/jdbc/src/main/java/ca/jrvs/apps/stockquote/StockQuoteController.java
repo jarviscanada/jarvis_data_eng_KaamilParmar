@@ -88,7 +88,7 @@ public class StockQuoteController {
                 continue;
             }
 
-            String ticker = args[0];
+            String ticker = args[0].toUpperCase();
             String operation = args[1].toLowerCase();
 
             if (operation.equals("save")) {
@@ -105,7 +105,7 @@ public class StockQuoteController {
             } else if (operation.equals("find")) {
                 // Use DAO functions for finding
                 Optional<Quote> quote = sQuote.find(ticker);
-                if(quote.isPresent()) System.out.println(" "+quote.get());
+                if(quote.isPresent()) System.out.println(" "+quote.get().toString());
                 else System.out.println("No quote exists for this. Try saving it first.");
 
             } else if (operation.equals("delete")) {
@@ -126,7 +126,10 @@ public class StockQuoteController {
                 }
                 sPos.sell(ticker);
             } else if (operation.equals("findall")) {
-                sQuote.findAll();
+
+                for (Quote quote : sQuote.findAll()) {
+                    System.out.println(quote.toString());
+                }
             }else {
                 System.out.println("Invalid command: " + operation + ". Please try again.");
             }

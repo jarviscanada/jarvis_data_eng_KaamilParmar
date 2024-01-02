@@ -25,6 +25,15 @@ public class Position {
         this.valuePaid = valuePaid;
     }
 
+    @Override
+    public String toString() {
+        return "Position{" +
+                "ticker='" + ticker + '\'' +
+                ", numOfShares=" + numOfShares +
+                ", valuePaid=" + valuePaid +
+                '}';
+    }
+
     private String ticker; //id
     private int numOfShares;
     private double valuePaid; //total amount paid for shares

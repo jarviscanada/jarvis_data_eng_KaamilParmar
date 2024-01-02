@@ -44,9 +44,9 @@ public class QuoteService {
         dao.deleteById(symbol);
     }
 
-    public void findAll() {
+    public Iterable<Quote> findAll() {
         //TO DO
-        dao.findAll();
+        return dao.findAll();
     }
 
     public void deleteAll() {

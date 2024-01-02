@@ -94,6 +94,23 @@ public class Quote {
         this.timestamp = timestamp;
     }
 
+    @Override
+    public String toString() {
+        return "Quote{" +
+                "symbol='" + symbol + '\'' +
+                ", open=" + open +
+                ", high=" + high +
+                ", low=" + low +
+                ", price=" + price +
+                ", volume=" + volume +
+                ", latestTradingDay=" + latestTradingDay +
+                ", previousClose=" + previousClose +
+                ", change=" + change +
+                ", changePercent='" + changePercent + '\'' +
+                ", timestamp=" + timestamp +
+                '}';
+    }
+
     @JsonProperty("01. symbol")
     private String symbol; //id
 
