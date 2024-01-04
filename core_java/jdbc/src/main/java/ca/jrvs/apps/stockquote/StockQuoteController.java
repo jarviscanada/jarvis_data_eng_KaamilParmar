@@ -33,7 +33,7 @@ public class StockQuoteController {
         this.sPos = sPos;
     }
 
-    public static void main(String[] args) {
+    public static void client(String[] args) {
             Map<String, String> properties = new HashMap<>();
 
 
