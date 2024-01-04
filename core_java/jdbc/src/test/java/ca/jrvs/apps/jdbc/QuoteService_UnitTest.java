@@ -14,10 +14,11 @@ import static org.mockito.Mockito.*;
 
 public class QuoteService_UnitTest {
     private QuoteService quoteService;
-
+    private QuoteHttpHelper helper;
+    private QuoteDao dao;
     @Before
     public void setup() {
-        quoteService = new QuoteService("");
+        quoteService = new QuoteService(dao,helper);
     }
 
     @Test
