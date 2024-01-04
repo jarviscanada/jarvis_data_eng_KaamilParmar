@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.sql.Connection;
 import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
@@ -18,10 +19,11 @@ public class PositionService_IntTest {
     private PositionDao mockDao;
     private PositionService positionService;
 
+    private Connection c;
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        positionService = new PositionService(pRepo);
+        positionService = new PositionService(mockDao);
     }
 
     @Test

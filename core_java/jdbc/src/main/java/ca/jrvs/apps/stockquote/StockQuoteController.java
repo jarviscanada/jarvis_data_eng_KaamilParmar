@@ -1,11 +1,12 @@
 package ca.jrvs.apps.stockquote;
 
-import ca.jrvs.apps.stockquote.dao.*;
+import ca.jrvs.apps.stockquote.dao.PositionDao;
+import ca.jrvs.apps.stockquote.dao.Quote;
+import ca.jrvs.apps.stockquote.dao.QuoteDao;
+import ca.jrvs.apps.stockquote.dao.QuoteHttpHelper;
 import ca.jrvs.apps.stockquote.services.PositionService;
 import ca.jrvs.apps.stockquote.services.QuoteService;
 import okhttp3.OkHttpClient;
-import org.apache.log4j.BasicConfigurator;
-import org.postgresql.util.PSQLException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,13 +14,11 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.ConnectException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
-
-import java.sql.SQLException;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -37,7 +36,7 @@ public class StockQuoteController {
     public static void main(String[] args) {
             Map<String, String> properties = new HashMap<>();
 
-            BasicConfigurator.configure();
+
             try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/properties.txt"))) {
                 String line;
                 while ((line = br.readLine()) != null) {

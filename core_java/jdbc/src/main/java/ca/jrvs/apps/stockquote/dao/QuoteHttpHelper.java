@@ -72,7 +72,7 @@ public class QuoteHttpHelper {
             logger.error("Could not parse data properly. IOException");
         }
 
-
-        return quote;
+        if(quote.getSymbol() == null) return null;
+        else return quote;
     }
 }

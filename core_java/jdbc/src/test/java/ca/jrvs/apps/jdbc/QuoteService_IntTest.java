@@ -7,6 +7,7 @@ import ca.jrvs.apps.stockquote.services.QuoteService;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.sql.Connection;
 import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
@@ -17,11 +18,12 @@ public class QuoteService_IntTest {
     private QuoteHttpHelper mockHttpHelper;
     private QuoteService quoteService;
 
+    private Connection c;
     @Before
     public void setup() {
         mockDao = mock(QuoteDao.class);
         mockHttpHelper = mock(QuoteHttpHelper.class);
-        quoteService = new QuoteService("");
+        quoteService = new QuoteService(mockDao, mockHttpHelper);
     }
 
     @Test

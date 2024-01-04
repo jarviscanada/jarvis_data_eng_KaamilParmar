@@ -6,15 +6,18 @@ import ca.jrvs.apps.stockquote.services.PositionService;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.sql.Connection;
+
 import static org.junit.Assert.*;
 
 public class PositionService_UnitTest {
     private PositionService positionService;
     private PositionDao dao;
+    private Connection c;
     @Before
     public void setup() {
-        PositionDao dao = new PositionDao();
-        positionService = new PositionService(pRepo);
+        PositionDao dao = new PositionDao(c);
+        positionService = new PositionService(dao);
     }
 
     @Test
