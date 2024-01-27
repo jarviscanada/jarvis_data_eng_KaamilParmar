@@ -1,0 +1,156 @@
+# Preferred name (Characters only)
+name: "Kaamil Parmar"
+# Your GitHub repo root URL
+github_repo_root_url: https://github.com/jarviscanada/jarvis_data_eng_KaamilParmar
+
+# Introduce yourself, your academic and professional background.
+# What excites you about the software industry and your passion. At least 80 words
+summary: I am a Computer Science graduate from York University with a passion for coding, software development, and technology. Throughout my education at York University, I developed strong analytical, problem-solving, and coding skills. Additionally, I also cultivated a strong understanding of fundamental topics such as data structures, algorithms, and software design. Prior to Jarvis, I acquired valuable experience in the software industry through contract work, specializing in full stack development. I successfully contributed to the development of web applications, showcasing expertise in building robust and scalable software. The most notable of these is my work at InspoBoard as a full stack developer, where I helped develop a SaaS analytics tool utilized by ad agencies and businesses. By leveraging my solid academic foundation in Computer Science and my established track record as a developer, I am confident to take on a role that demands technical expertise and utilization of a diverse range of technologies.
+# Your skills can be anything software related (e.g. language, frameworks, methodologies, software, etc.).
+skills:
+  # At least 5 skills
+  proficient:
+    - Java
+    - Linux/Bash
+    - RDBMS/SQL
+    - Agile/Scrum
+    - Git
+    - Javascript/Typescript
+    - React
+    - Node
+    - Express
+    - HTML/CSS
+    - Python
+  
+  # At least 5 skills
+  competent:
+    - MongoDB
+    - C/C++
+    - Springboot
+    - Docker
+    - Github Actions
+    - Mocha
+    - JUnit
+    - Swing
+
+  # At least 5 skills
+  familiar:
+    - C#
+    - Objective-C
+    - Swift
+    - pandas
+    - pygame
+
+# List of Jarvis projects
+jarvis_projects:
+  - name: "Cluster Monitor"
+    git_url: "https://github.com/jarviscanada/jarvis_data_eng_KaamilParmar/tree/main/linux_sql"
+    # The project description allows hiring managers to understand your project and technologies you used(e.g. programming languages, libraries, algorithms, hardware, tools, etc.).
+    # The project description must start with an action verb (https://bit.ly/3guO98u)
+    description: Implemented a Bash-based monitoring agent to consistently track and store hardware specs and usage data of host machines. Deployed the application on Docker, syncing data with a PostgreSQL database. Conducted operations on a CentOS virtual machine hosted on Google Cloud Platform. Automated data collection using crontab for regular updates. Tested the system functionality through command-line interface (CLI) for robust performance.
+
+  - name: "SQL Queries"
+    git_url: "https://github.com/jarviscanada/jarvis_data_eng_KaamilParmar/tree/main/SQL"
+    # The project description allows hiring managers to understand your project and technologies you used(e.g. programming languages, libraries, algorithms, hardware, tools, etc.).
+    # The project description must start with an action verb (https://bit.ly/3guO98u)
+    description: Implemented and executed SQL queries on PostgreSQL tables within a Docker container. Utilized DBeaver for query execution, focusing on exercises from pgexercise. Demonstrated proficiency in CRUD operations, Joins, Aggregate Functions, and advanced SQL techniques. Emphasized database setup and schema understanding for effective query execution.
+  #
+#  - name: "Core Java Apps"
+#    git_url: "/core_java"
+#    description:
+#      - GREP APP: Developed a counterpart to the grep Linux command line utility using Java, incorporating Lambda and Stream APIs in the implementation. Employed Maven for packaging the application and subsequently deployed it on Docker Hub through Docker
+#      - ""
+#      - ""
+#
+#  - name: "Core Java Apps"
+#    git_url: "/core_java"
+#    description:
+#      - GREP APP: Developed a counterpart to the grep Linux command line utility using Java, incorporating Lambda and Stream APIs in the implementation. Employed Maven for packaging the application and subsequently deployed it on Docker Hub through Docker
+#      - ""
+#      - ""
+
+  - name: "Java Grep App"
+    git_url: "/core_java"
+    description: Developed a counterpart to the grep Linux command line utility using Java, incorporating Lambda and Stream APIs in the implementation. Employed Maven for packaging the application and subsequently deployed it on Docker Hub through Docker
+
+  - name: "Java Stock Quote APP (JDBC)"
+    git_url: "/core_java"
+    description: Created a tool that simulates real-time buying and selling of stock positions in Java. It utilizes a third-party API (Vantage) to collect real-time stock market data in JSON format and then converts JSON data into Java objects and parses them into a PostgreSQL server. The application relies on OkHttp for making HTTP requests to VantageAPI and Jackson library for processing JSON data. All requests are stored in a PostgreSQL database, which is running in a Docker container. To ensure the accuracy of the program, the application includes a comprehensive amount of unit and integration tests. This was accomplished using tools and libraries such as JUnit, Mockito, and log4j Logger. The app is controlled and utilized by the user through the console.
+
+#  - name: "Springboot App"
+#    git_url: "/springboot"
+#    description: ""
+#  - name: "Python Data Analytics"
+#    git_url: "/python_data_anlytics"
+#    description: ""
+#  - name: "Hadoop"
+#    git_url: "/hadoop"
+#    description: ""
+#  - name: "Spark"
+#    git_url: "/spark"
+#    description: ""
+#  - name: "Cloud/DevOps"
+#    git_url: "/cloud_devops"
+#    description: ""
+
+# List of personal or academic projects
+# Feel free to add more projects
+highlighted_projects:
+    #project name
+  - name: "E-Commerce Application"
+    git_url: "https://github.com/klparmar/react-ecomm-stripe-proj"
+    description: Deployed a responsive, dynamic, and mobile-adaptive FullStack web application for E-commerce, utilizing Javascript, Java Spring and Bootstrap as a platform for businesses to sell products
+
+  - name: "Retro Video Games in Java"
+    #URL is optional
+    git_url: "https://github.com/klparmar/Java-Projects"
+    # The project description must start with an action verb (https://bit.ly/3guO98u)
+    description: Created various interactive gaming applications utilizing numerous Java libraries such as Atari Breakout, Space Invaders, Frogger, and Pong.
+
+#List of professional experience
+#The job description allows hiring managers to understand your job and the technologies you used(e.g. programming languages, libraries, algorithms, hardware, tools, etc.).
+#The description must be more than 25 words. If your experience is not software related, please focus on soft skills and achievements (e.g. team collaboration, problem-solving, improvements, communication).
+professional_experience:
+  #Write your Jarvis role as a professional experience rather than training.
+  - title: "Software Developer"
+    company: "Jarvis"
+    duration: "2023-present"
+    # The project description must start with an action verb (https://bit.ly/3guO98u)
+    description: "Developed and deployed several applications with languages and frameworks such as Bash, SQL, Java, Spark, Scala, Python, Javascript, React, Spring, Docker and worked in an Agile and Scrum environment. Utilized Git and GitFlow for version control"
+  - title: "Full Stack Developer"
+    company: "InspoBoard"
+    duration: "2022-2023"
+    description: "Designed, developed, and maintained a SaaS analytics application for ad agencies and businesses to store, organize, and manage Facebook and TikTok ads using the MERN (MongoDB, Express.js, React, Node.js) stack."
+#List of edcuation
+education: 
+  - school_name: "York University"
+    duration: "2018-2023"
+    degree: "Honours Bachelor of Science"
+    department: "Computer Science"
+    # optional
+    awards_achievements:
+      - "CodeFI Club Hackathon Participant"
+#  - school_name: "XYZ university"
+#    duration: "2016-2018"
+#    degree: "Master of Engineering"
+#    department: "Electrical and Computer Engineering"
+#    awards_achievements:
+
+#Optional section
+others:
+    #category
+  - title: "Certificates"
+    #list of items
+    bullets:
+      - "CodeFI Club Leetcode Organizer at York University"
+#  - title: "Awards"
+#    bullets:
+#      - "Winner"
+  - title: "Activities/Hobbies"
+    bullets:
+      - "Basketball player (Love being a team player and cooperating)"
+      - "Competitive gaming (Love challenging myself)"
+      - "Astronomy (Love to discover and learn)"
+      - "Origami (Like to engage in tasks that involve time care)"
+      - "Chess (Love solving problems)"
+      - "Working out (Strive for consistency)"

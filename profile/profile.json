@@ -1,0 +1,115 @@
+{
+  "education": [
+    {
+      "awards_achievements": [
+        "CodeFI Club Hackathon Participant"
+      ],
+      "degree": "Honours Bachelor of Science",
+      "department": "Computer Science",
+      "duration": "2018-2023",
+      "school_name": "York University"
+    }
+  ],
+  "github_repo_root_url": "https://github.com/jarviscanada/jarvis_data_eng_KaamilParmar",
+  "highlighted_projects": [
+    {
+      "description": "Deployed a responsive, dynamic, and mobile-adaptive FullStack web application for E-commerce, utilizing Javascript, Java Spring and Bootstrap as a platform for businesses to sell products",
+      "git_url": "https://github.com/klparmar/react-ecomm-stripe-proj",
+      "name": "E-Commerce Application"
+    },
+    {
+      "description": "Created various interactive gaming applications utilizing numerous Java libraries such as Atari Breakout, Space Invaders, Frogger, and Pong.",
+      "git_url": "https://github.com/klparmar/Java-Projects",
+      "name": "Retro Video Games in Java"
+    }
+  ],
+  "jarvis_projects": [
+    {
+      "description": "Implemented a Bash-based monitoring agent to consistently track and store hardware specs and usage data of host machines. Deployed the application on Docker, syncing data with a PostgreSQL database. Conducted operations on a CentOS virtual machine hosted on Google Cloud Platform. Automated data collection using crontab for regular updates. Tested the system functionality through command-line interface (CLI) for robust performance.",
+      "git_url": "https://github.com/jarviscanada/jarvis_data_eng_KaamilParmar/tree/main/linux_sql",
+      "name": "Cluster Monitor"
+    },
+    {
+      "description": "Implemented and executed SQL queries on PostgreSQL tables within a Docker container. Utilized DBeaver for query execution, focusing on exercises from pgexercise. Demonstrated proficiency in CRUD operations, Joins, Aggregate Functions, and advanced SQL techniques. Emphasized database setup and schema understanding for effective query execution.",
+      "git_url": "https://github.com/jarviscanada/jarvis_data_eng_KaamilParmar/tree/main/SQL",
+      "name": "SQL Queries"
+    },
+    {
+      "description": "Developed a counterpart to the grep Linux command line utility using Java, incorporating Lambda and Stream APIs in the implementation. Employed Maven for packaging the application and subsequently deployed it on Docker Hub through Docker",
+      "git_url": "/core_java",
+      "name": "Java Grep App"
+    },
+    {
+      "description": "Created a tool that simulates real-time buying and selling of stock positions in Java. It utilizes a third-party API (Vantage) to collect real-time stock market data in JSON format and then converts JSON data into Java objects and parses them into a PostgreSQL server. The application relies on OkHttp for making HTTP requests to VantageAPI and Jackson library for processing JSON data. All requests are stored in a PostgreSQL database, which is running in a Docker container. To ensure the accuracy of the program, the application includes a comprehensive amount of unit and integration tests. This was accomplished using tools and libraries such as JUnit, Mockito, and log4j Logger. The app is controlled and utilized by the user through the console.",
+      "git_url": "/core_java",
+      "name": "Java Stock Quote APP (JDBC)"
+    }
+  ],
+  "name": "Kaamil Parmar",
+  "others": [
+    {
+      "bullets": [
+        "CodeFI Club Leetcode Organizer at York University"
+      ],
+      "title": "Certificates"
+    },
+    {
+      "bullets": [
+        "Basketball player (Love being a team player and cooperating)",
+        "Competitive gaming (Love challenging myself)",
+        "Astronomy (Love to discover and learn)",
+        "Origami (Like to engage in tasks that involve time care)",
+        "Chess (Love solving problems)",
+        "Working out (Strive for consistency)"
+      ],
+      "title": "Activities/Hobbies"
+    }
+  ],
+  "professional_experience": [
+    {
+      "company": "Jarvis",
+      "description": "Developed and deployed several applications with languages and frameworks such as Bash, SQL, Java, Spark, Scala, Python, Javascript, React, Spring, Docker and worked in an Agile and Scrum environment. Utilized Git and GitFlow for version control",
+      "duration": "2023-present",
+      "title": "Software Developer"
+    },
+    {
+      "company": "InspoBoard",
+      "description": "Designed, developed, and maintained a SaaS analytics application for ad agencies and businesses to store, organize, and manage Facebook and TikTok ads using the MERN (MongoDB, Express.js, React, Node.js) stack.",
+      "duration": "2022-2023",
+      "title": "Full Stack Developer"
+    }
+  ],
+  "skills": {
+    "competent": [
+      "MongoDB",
+      "C/C++",
+      "Springboot",
+      "Docker",
+      "Github Actions",
+      "Mocha",
+      "JUnit",
+      "Swing"
+    ],
+    "familiar": [
+      "C#",
+      "Objective-C",
+      "Swift",
+      "pandas",
+      "pygame"
+    ],
+    "proficient": [
+      "Java",
+      "Linux/Bash",
+      "RDBMS/SQL",
+      "Agile/Scrum",
+      "Git",
+      "Javascript/Typescript",
+      "React",
+      "Node",
+      "Express",
+      "HTML/CSS",
+      "Python"
+    ]
+  },
+  "summary": "I am a Computer Science graduate from York University with a passion for coding, software development, and technology. Throughout my education at York University, I developed strong analytical, problem-solving, and coding skills. Additionally, I also cultivated a strong understanding of fundamental topics such as data structures, algorithms, and software design. Prior to Jarvis, I acquired valuable experience in the software industry through contract work, specializing in full stack development. I successfully contributed to the development of web applications, showcasing expertise in building robust and scalable software. The most notable of these is my work at InspoBoard as a full stack developer, where I helped develop a SaaS analytics tool utilized by ad agencies and businesses. By leveraging my solid academic foundation in Computer Science and my established track record as a developer, I am confident to take on a role that demands technical expertise and utilization of a diverse range of technologies."
+}
